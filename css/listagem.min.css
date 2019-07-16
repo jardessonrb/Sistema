@@ -1,0 +1,15 @@
+#container{
+	position: relative;
+	width: 100%;
+	margin-left: 1.5%;
+}
+#container table{
+	position: relative;
+	width: 95%;
+	margin-left: 2%;
+	border: 1px solid #333;
+}
+.thead-dark{
+	background: #333;
+	color: #FFFF;
+}

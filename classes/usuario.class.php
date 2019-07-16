@@ -8,11 +8,18 @@ class Usuario{
 		$conexao = $c->conexao();
 
 
-		$sql = "SELECT nome_usuario, senha FROM tab_usuario WHERE  nome_usuario = '$dados[1]' AND senha_usuario = '$dados[0]'";
+		$sql = "SELECT nome_usuario, senha_usuario FROM tab_usuario WHERE nome_usuario = '$dados[0]' AND senha_usuario = '$dados[1]'";
 
-		$result = mysqli_fetch($conexao, $sql);
+		$result = mysqli_query($conexao, $sql);
 
-		return $result;
+		if (mysqli_num_rows($result) > 0) {
+			
+			 return  1;
+		}
+
+       
+
+		
 
 	}
 }

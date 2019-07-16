@@ -20,17 +20,12 @@
 						</p>
 						<form id="frmLogin">
 							<label>Usuario</label>
-							<input type="text" class="form-control input-sm" name="email" id="email">
+							<input type="text" class="form-control input-sm" name="usuario" id="usuario">
 							<label>Senha</label>
 							<input type="password" name="senha" id="senha" class="form-control input-sm">
 							<p></p>
 							<span class="btn btn-primary btn-sm" id="entrarSistema">Entrar</span>
-							<!--<?php if(!$validar): ?>-->
 							<a href="registrar.php" class="btn btn-danger btn-sm">Registrar</a>
-
-							<!--<?php 
-								endif;
-							 ?>-->
 							
 						</form>
 					</div>
@@ -54,14 +49,14 @@
 			}
 
 		dados=$('#frmLogin').serialize();
+		
 		$.ajax({
 			type:"POST",
 			data:dados,
 			url:"controle/usuario/logarSistema.php",
 			success:function(r){
-				//alert(r);
 				if(r==1){
-					window.location="view/inicio.php";
+					window.location="views/inicio.php";
 				}else{
 					alert("Acesso Negado!!");
 				}

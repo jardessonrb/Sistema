@@ -1,6 +1,7 @@
 <?php 
 
 class Conectar{
+	
 	private $servidor = "localhost";
 	private $usuario = "root";
 	private $senha = "";
