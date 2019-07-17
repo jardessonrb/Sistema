@@ -31,6 +31,17 @@
 </body>
 </html>
 <script type="text/javascript">
+	function verCampo(){
+		var predio = document.getElementById('nome_predio').value;
+		var setor = document.getElementById('nome_setor').value;
+		if (predio == "nulo" || setor == "") {
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+</script>
+<script type="text/javascript">
 		$(document).ready(function(){
 
 			$('#btnCadFuncionario').click(function(){
@@ -47,29 +58,19 @@
 				$.ajax({
 					type:"POST",
 					data:dados,
-					url:"../procedimentos/clientes/cadastrocliente.php",
+					url:"../controle/local/cadlocal.cont.php",
 					success:function(r){
-
+						
 						if(r==1){
-							$('#frmClientes')[0].reset();
-							alertify.success("Cliente Adicionado");
+							$('#frmCadLocal')[0].reset();
+							alert("Local Adicionado");
 						}else{
-							alertify.error("Não foi possível adicionar");
+							alert("Não foi possível adicionar");
 						}
 					}
 				});
 			});
 		});
 </script>
-<script type="text/javascript">
-	function verCampo(){
-		var predio = document.getElementById('nome_predio').value;
-		var setor = document.getElementById('nome_setor').value
-		if (predio == "nulo" || setor == "") {
-			return 1;
-		}else{
-			return 0;
-		}
-	}
-</script>
+
 

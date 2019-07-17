@@ -26,7 +26,7 @@ $nome = mysqli_query($conexao, $sql);
 					<select class="form-control input-sm" name="nome_funcionario" id="nome_funcionario">
 						<option value="nulo" selected="">Selecione Funcionário</option>
 						<?php while ($mostra = mysqli_fetch_row($nome)):?>
-							<option value="<?php echo $mostra[0] ?>"><?php echo $mostra[1] ?></option>
+							<option value="<?php echo $mostra[0] ?>"><?php echo utf8_encode($mostra[1]) ?></option>
 						<?php endwhile; ?>	
 					</select>
 					<label>Nome Usuario</label>
@@ -65,18 +65,18 @@ $nome = mysqli_query($conexao, $sql);
 				}
 
 				dados=$('#frmCadUsuario').serialize();
-
+				
 				$.ajax({
 					type:"POST",
 					data:dados,
-					url:"../procedimentos/clientes/cadastrocliente.php",
+					url:"../controle/usuario/cadusuario.cont.php",
 					success:function(r){
-
+						
 						if(r==1){
-							$('#frmClientes')[0].reset();
-							alertify.success("Cliente Adicionado");
+							$('#frmCadUsuario')[0].reset();
+							alert("Usuario Adicionado");
 						}else{
-							alertify.error("Não foi possível adicionar");
+							alert("Não foi possível adicionar");
 						}
 					}
 				});

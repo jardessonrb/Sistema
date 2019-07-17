@@ -53,18 +53,20 @@
 				}
 
 				dados=$('#frmCadFuncionario').serialize();
+				alert(dados);
 
 				$.ajax({
 					type:"POST",
 					data:dados,
-					url:"../procedimentos/clientes/cadastrocliente.php",
+					url:"../controle/funcionario/cadfuncionario.cont.php",
 					success:function(r){
 
+						alert(r);
 						if(r==1){
-							$('#frmClientes')[0].reset();
-							alertify.success("Cliente Adicionado");
+							$('#frmCadFuncionario')[0].reset();
+							alert("Funcionário Adicionado");
 						}else{
-							alertify.error("Não foi possível adicionar");
+							alert("Não foi possível adicionar");
 						}
 					}
 				});

@@ -5,11 +5,19 @@ require_once "../classes/conexao.class.php";
 $c = new Conectar();
 $conexao = $c->conexao();
 
-$sql =  "SELECT id_local, nome_predio, setor_local FROM tab_local";
+$sql1 =  "SELECT id_local, nome_predio, setor_local FROM tab_local";
 
-$nome = mysqli_query($conexao, $sql);
+$nome_loc = mysqli_query($conexao, $sql1);
 
 ?>
+<?php 
+
+$sql2 =  "SELECT id_funcionario, nome_funcionario FROM tab_funcionario";
+
+$nome_func = mysqli_query($conexao, $sql2);
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +31,18 @@ $nome = mysqli_query($conexao, $sql);
 			<form id="frmCadMemorando">
 			<label>Nome Local</label>
 			<select class="form-control input-sm" name="nome_local" id="nome_local">
-						<option value="nulo" selected="">Selecione Local</option>
-						<?php while ($mostra = mysqli_fetch_row($nome)):?>
-							<option value="<?php echo $mostra[0] ?>"><?php echo $mostra[1]." - ".utf8_encode($mostra[2])?></option>
-						<?php endwhile; ?>	
-					</select>
+				<option value="nulo" selected="">Selecione Local</option>
+				<?php while ($mostra = mysqli_fetch_row($nome_loc)):?>
+					<option value="<?php echo $mostra[0] ?>"><?php echo $mostra[1]." - ".utf8_encode($mostra[2])?></option>
+				<?php endwhile; ?>	
+			</select>
+			<label>Funcionario</label>
+			<select class="form-control input-sm" name="nome_funcionario" id="nome_funcionario">
+				<option value="nulo" selected="">Selecione o Funcionário</option>
+				<?php while ($mostra = mysqli_fetch_row($nome_func)):?>
+					<option value="<?php echo $mostra[0] ?>"><?php echo utf8_encode($mostra[1])?></option>
+				<?php endwhile; ?>	
+			</select>
 			<label>Destino</label>
 			<input type="text" class="form-control input-sm" id="nome_destino" name="nome_destino" placeholder="Ex: R.H">
 			<label>Assunto</label>
@@ -62,14 +77,15 @@ $nome = mysqli_query($conexao, $sql);
 				$.ajax({
 					type:"POST",
 					data:dados,
-					url:"../procedimentos/clientes/cadastrocliente.php",
+					url:"../controle/memorando/cadmemorando.cont.php",
 					success:function(r){
 
+						alert(r);
 						if(r==1){
-							$('#frmClientes')[0].reset();
-							alertify.success("Cliente Adicionado");
+							$('#frmCadMemorando')[0].reset();
+							alert("Memorando Adicionado");
 						}else{
-							alertify.error("Não foi possível adicionar");
+							alert("Não foi possível adicionar");
 						}
 					}
 				});
@@ -82,7 +98,8 @@ $nome = mysqli_query($conexao, $sql);
 		var destino = document.getElementById('nome_destino').value;
 		var assunto = document.getElementById('nome_assunto').value;
 		var corpo = document.getElementById('nome_justificativa').value;
-		if (local == "nulo" || destino == "" || assunto == "" || corpo == "" ) {
+		var funcionario = document.getElementById('nome_funcionario').value;
+		if (local == "nulo" || funcionario == "nulo" || destino == "" || assunto == "" || corpo == "" ) {
 			return 1;
 		}else{
 			return 0;
