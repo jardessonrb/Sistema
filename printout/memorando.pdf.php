@@ -1,24 +1,28 @@
 <!--Inicio do bloco PHP-->
 <?php 
 
-	require_once "../../classes/conexao.class.php";
+	require_once "../classes/conexao.class.php";
 
 
-	$c= new conectar();
-	$conexao=$c->conexao();
-	$idmemorando=$_GET['idMemorando'];
+	$c = new Conectar();
+	$conexao = $c->conexao();
 
-	$sql="SELECT M.id_memorando, F.nome_funcionario, M.destino_memorando, M.corpo_memorando, M.data_memorando,M.emissor_memorando FROM tab_memorando M JOIN tab_funcionario F on M.id_funcionario = F.id_funcionario where id_memorando = '$idmemorando';" ;
-$result=mysqli_query($conexao,$sql);
+	$idmemorando = $_GET['id_mem'];
 
-	$ver=mysqli_fetch_row($result);
-	$memorando=$ver[0];
-	$funcionario=$ver[1];
-	$receptor=$ver[2];
-	$justificativa=$ver[3];
-	$data=$ver[4];
-	$emissor=$ver[5];
-	$tag = "Funcionário";
+	$sql="SELECT mem.emissor_memorando, mem.destino_memorando, mem.assunto_memorando, mem.corpo_memorando, loc.setor_local, loc.nome_predio, fun.nome_funcionario  FROM tab_memorando mem JOIN tab_local loc JOIN tab_funcionario fun ON mem.id_local = loc.id_local AND fun.id_funcionario = mem.id_funcionario WHERE mem.id_memorando = '$idmemorando'";
+
+    $result=mysqli_query($conexao,$sql);
+
+	$ver = mysqli_fetch_row($result);
+
+	$emissor  = $ver[0];
+	$destino  = $ver[1];
+	$assunto  = $ver[2];
+	$corpo    = $ver[3];
+	$local1   = $ver[4];
+	$local2   = $ver[5];
+	$funcion  = $ver[6];
+	$data     = date("Y/m/d");
 	
 
  ?>	
@@ -133,11 +137,11 @@ $result=mysqli_query($conexao,$sql);
  			<div class="row"> 
  				<div id="corpo">
  					<div id="conteudo_corpo">
- 						<p>De:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo utf8_encode($emissor)?></p>
-			        	<p>Para:&nbsp;&nbsp;<?php echo utf8_encode($receptor)?></p>
-			        	<p>Funcionario:&nbsp;&nbsp;<?php echo utf8_encode($funcionario)?></p>
+ 				    <p>De:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo utf8_encode($local2)."-".$local1 ?></p>
+			        	<p>Para:&nbsp;&nbsp;<?php echo utf8_encode($destino)?></p>
+			        	<p>Funcionario:&nbsp;&nbsp;<?php echo utf8_encode($funcion)?></p>
 			        	<div id="conteudo_justifi">
-			        		<?php echo utf8_encode($justificativa)?>
+			        		<?php echo utf8_encode($corpo)?>
 			        	</div>
  					</div>
  					

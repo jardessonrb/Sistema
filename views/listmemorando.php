@@ -39,11 +39,16 @@ $result = mysqli_query($conexao, $sql);
       <td><?php echo utf8_encode($mostra[2]) ?></td>
       <td><?php echo $mostra[3] ?></td>
       <td><?php echo utf8_encode($mostra[4]) ?></td>
-	  <td>
+      <td>
+        <a href="../controle/print/memorando.print.php?id_mem=<?php echo $mostra[0]?>" class="btn btn-primary btn-xs"><span>
+          <span class="glyphicon glyphicon-print"></span>
+        </span></a>
+      </td>
+	  <!--<td>
 		<span class="btn btn-primary btn-xs" onclick="imprimirMemorando('<?php echo $mostra[0] ?>')">
 			<span class="glyphicon glyphicon-pencil"></span>
 		</span>
-      </td>
+      </td>-->
 	</tr>
 </tbody>
 <?php endwhile; ?>
@@ -51,17 +56,3 @@ $result = mysqli_query($conexao, $sql);
 </div>
 </body>
 </html>
-<script type="text/javascript">
-  function imprimirMemorando(id){
-        alert(id);
-
-        $.ajax({
-          type:"POST",
-          data:{id_memorando: id},
-          url:"../controle/print/memorando.print.php",
-          success:function(r){
-          }
-        });
-
-  }
-</script>

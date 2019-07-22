@@ -4,7 +4,8 @@ require_once '../../lib/dompdf/autoload.inc.php';
 
 use Dompdf\Dompdf;
 
-$id=$_POST['id_memorando'];
+$id = $_GET['id_mem'];
+
 function file_get_contents_curl($url) {
     $ch = curl_init();
 
@@ -19,7 +20,7 @@ function file_get_contents_curl($url) {
 }
 
 
- $html=file_get_contents("http://localhost/Sistema/printout/memorando.pdf.php?idMemorando=".$id);
+ $html=file_get_contents("http://localhost/Sistema/printout/memorando.pdf.php?id_mem=".$id);
 
 
  
