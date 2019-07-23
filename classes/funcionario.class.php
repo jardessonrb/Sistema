@@ -16,6 +16,31 @@ class Funcionario{
 	}
 
 
+	function getDadosFuncionario($id_fun){
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT id_funcionario, nome_funcionario, telefone1_funcionario, telefone2_funcionario, cargo_funcionario, cpf_funcionario FROM tab_funcionario WHERE id_funcionario = '$id_fun'";
+
+		$result = mysqli_query($conexao, $sql);
+
+		$mostra = mysqli_fetch_row($result);
+
+		$dados = array(
+			'idfuncionario' => $mostra[0],
+			'nome' 		    => $mostra[1],
+			'tel01'         => $mostra[2],
+			'tel02'         => $mostra[3],
+			'cargo'         => $mostra[4],
+			'cpf'           => $mostra[5]
+
+		);
+
+		return $dados;
+
+	}
+
+
 }
 
 

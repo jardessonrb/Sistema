@@ -36,6 +36,30 @@ class Memorando{
 		return $mostra[0];
 
 	}
+
+	function getDadosMemorando($id_mem){
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT mem.id_memorando, loc.setor_local, mem.data_memorando, mem.assunto_memorando, mem.corpo_memorando FROM tab_memorando mem JOIN tab_local loc ON mem.id_local = loc.id_local WHERE id_memorando = '$id_mem'";
+
+		$result =  mysqli_query($conexao, $sql);
+
+		$mostra = mysqli_fetch_row($result);
+
+		$dados = array(
+			
+			'idmemorando'   => $mostra[0],
+			'nome_local'    => $mostra[1],
+			'data'          => $mostra[2],
+			'assunto'       => $mostra[3],
+			'justificativa' => $mostra[4]
+
+		);
+
+		return $dados;
+
+	}
 }
 
 
