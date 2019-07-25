@@ -18,6 +18,7 @@ $result = mysqli_query($conexao, $sql);
   <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
   <script src="../lib/jquery-3.2.1.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.js"></script>
+  <script src="../js/jquery.mask.min.js"></script>
   
   
 </head>
@@ -58,7 +59,7 @@ $result = mysqli_query($conexao, $sql);
             <h4 class="modal-title" id="myModalLabel">Atualizar Funcionário</h4>
           </div>
           <div class="modal-body">
-            <form id="frmClientesU">
+            <form id="frmFuncionarioU">
               <input type="text" hidden="" id="idfuncionarioU" name="idfuncionarioU">
               <label>Nome</label>
               <input type="text" class="form-control input-sm" id="nomeU" name="nomeU">
@@ -73,13 +74,46 @@ $result = mysqli_query($conexao, $sql);
             </form>
           </div>
           <div class="modal-footer">
-            <button id="btnAdicionarClienteU" type="button" class="btn btn-primary" onclick="teste()" data-dismiss="modal">Atualizar</button>
+            <button id="btnAtualizarFuncionarioU" type="button" class="btn btn-primary" onclick="teste()" data-dismiss="modal">Atualizar</button>
           </div>
         </div>
       </div>
     </div>
+
+<!--####################          Testando Modal de Vereficação          #############################-->
+
+<div class="modal fade" id="abremodalConfimar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Confirme suas Credenciais</h4>
+          </div>
+          <div class="modal-body">
+            <form id="frmConfimar">
+              <input type="text" hidden="" id="idfuncionarioU" name="idfuncionarioU">
+              <label>Usuario</label>
+              <input type="text" class="form-control input-sm" id="UsuarioConfirme" name="UsuarioConfirme">
+              <label>Senha</label>
+               <input type="password" class="form-control input-sm" id="SenhaConfirme" name="SenhaConfirme">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btnAdicionarClienteU" type="button" class="btn btn-primary" onclick="teste()" data-dismiss="modal">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--#######################################################-->
+
 </body>
 </html>
+<script type="text/javascript">
+  $("#cpfU").mask("000.000.000-00")
+  $("#tel01U").mask("(00) 00000-0000")
+  $("#tel02U").mask("(00) 00000-0000")
+  
+</script>
 <script type="text/javascript">
     function getDadosFuncionario(id_funcionario){
 
@@ -102,20 +136,21 @@ $result = mysqli_query($conexao, $sql);
       });
     }
     $(document).ready(function(){
-      $('#btnAtualizarItemModal').click(function(){
-        dados=$('#frmAtualizarItemCozinhaModal').serialize();
+      $('#btnAtualizarFuncionarioU').click(function(){
+        dados=$('#frmFuncionarioU').serialize();
+        alert(dados);
 
         $.ajax({
           type:"POST",
           data:dados,
-          url:"../../procedimentos/itenscozinha/atualizarItemModal.php",
+          url:"../controle/funcionario/updfuncionario.cont.php",
           success:function(r){
 
             if(r==1){
-              alertify.success("Item Cozinha atualizado com sucesso!");
+              alert("Atualizado com sucesso!");
               window.location.reload();
             }else{
-              alertify.error("Não foi possível atualizar Item Cozinha");
+              alert("Não foi possível Atualizar");
             }
           }
         });
@@ -124,8 +159,3 @@ $result = mysqli_query($conexao, $sql);
 </script>
 
 
-<script type="text/javascript">
-  function teste(){
-    prompt("Digite suas credenciais");
-  }
-</script>

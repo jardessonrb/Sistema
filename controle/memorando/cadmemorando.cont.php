@@ -1,4 +1,4 @@
-<?php 
+<?php  
 
 require_once "../../classes/conexao.class.php";
 require_once "../../classes/memorando.class.php";
@@ -6,6 +6,7 @@ require_once "../../classes/memorando.class.php";
 $obj = new Memorando();
 
 $dados = array(
+
 	$_POST['nome_funcionario'],
 	$_POST['nome_local'],
 	$_POST['nome_destino'],
@@ -14,7 +15,14 @@ $dados = array(
 
 );
 
-echo $obj->cadMemorando($dados);
+if ($obj->cadMemorando($dados) == 1) {
+
+ 	header("Location: ../../views/listmemorando.php");
+
+}else{
+
+	header("Location: ../../views/cadmemorando.php");
+}
 
 
 ?>

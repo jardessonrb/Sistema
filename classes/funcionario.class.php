@@ -28,16 +28,29 @@ class Funcionario{
 
 		$dados = array(
 			'idfuncionario' => $mostra[0],
-			'nome' 		    => $mostra[1],
+			'nome' 		    => utf8_encode($mostra[1]),
 			'tel01'         => $mostra[2],
 			'tel02'         => $mostra[3],
-			'cargo'         => $mostra[4],
+			'cargo'         => utf8_encode($mostra[4]),
 			'cpf'           => $mostra[5]
 
 		);
 
 		return $dados;
 
+	}
+
+	function updateFuncionario($dados){
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "UPDATE tab_funcionario SET nome_funcionario = '$dados[1]', telefone1_funcionario = '$dados[2]', telefone2_funcionario = '$dados[3]', cargo_funcionario = '$dados[4]', cpf_funcionario = '$dados[5]' WHERE id_funcionario = '$dados[0]'; ";
+
+
+		$result = mysqli_query($conexao, $sql);
+
+
+		return $result;
 	}
 
 

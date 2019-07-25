@@ -38,10 +38,12 @@ class Memorando{
 	}
 
 	function getDadosMemorando($id_mem){
+		//Selecionar Dados do Memorando
+
 		$c = new Conectar();
 		$conexao = $c->conexao();
 
-		$sql = "SELECT mem.id_memorando, loc.setor_local, mem.data_memorando, mem.assunto_memorando, mem.corpo_memorando FROM tab_memorando mem JOIN tab_local loc ON mem.id_local = loc.id_local WHERE id_memorando = '$id_mem'";
+		$sql = "SELECT mem.id_memorando, loc.nome_predio, mem.data_memorando, mem.assunto_memorando, mem.corpo_memorando FROM tab_memorando mem JOIN tab_local loc ON mem.id_local = loc.id_local WHERE id_memorando = '$id_mem'";
 
 		$result =  mysqli_query($conexao, $sql);
 
@@ -50,19 +52,36 @@ class Memorando{
 		$dados = array(
 			
 			'idmemorando'   => $mostra[0],
-			'nome_local'    => $mostra[1],
+			'nome_local'    => utf8_encode($mostra[1]),
 			'data'          => $mostra[2],
-			'assunto'       => $mostra[3],
-			'justificativa' => $mostra[4]
+			'assunto'       => utf8_encode($mostra[3]),
+			'justificativa' => utf8_decode($mostra[4])
 
 		);
 
 		return $dados;
 
 	}
+
+
+	function updateMemorando($dados){
+		//Atualizar Memorando
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+		if ($dados[1] == "nulo") {
+			$sql = "UPDATE tab_memorando SET data_memorando = '$dados[2]' , assunto_memorando = '$dados[3]', corpo_memorando = '$dados[4]' WHERE id_memorando = '$dados[0]';";
+		}else{
+			$sql = "UPDATE tab_memorando SET id_local = '$dados[1]', data_memorando = '$dados[2]' , assunto_memorando = '$dados[3]', corpo_memorando = '$dados[4]' WHERE id_memorando = '$dados[0]';";
+		}
+
+		$result =  mysqli_query($conexao, $sql);
+
+		return $result;
+
+	}
+
+
 }
-
-
-
 
 ?>

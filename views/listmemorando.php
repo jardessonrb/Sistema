@@ -16,9 +16,8 @@ require_once "../classes/conexao.class.php";
 $c = new Conectar();
 $conexao = $c->conexao();
 
-/*$sql =  "SELECT mem.id_memorando,loc.setor_local, usu.nome_usuario, mem.data_memorando, mem.assunto_memorando, mem.corpo_memorando  FROM tab_memorando mem JOIN tab_usuario usu JOIN tab_local loc on mem.id_usuario = usu.id_usuario where mem.id_memorando = 1 LIMIT 4";*/
 
-$sql =  "SELECT mem.id_memorando,loc.setor_local, usu.nome_usuario, mem.data_memorando, mem.assunto_memorando, mem.assunto_memorando  FROM tab_memorando mem JOIN tab_usuario usu JOIN tab_local loc on mem.id_usuario = usu.id_usuario ORDER BY mem.data_memorando DESC LIMIT 4";
+$sql =  "SELECT mem.id_memorando,loc.setor_local,loc.nome_predio, usu.nome_usuario, mem.data_memorando, mem.assunto_memorando FROM tab_memorando mem JOIN tab_usuario usu JOIN tab_local loc on mem.id_usuario = usu.id_usuario AND mem.id_local = loc.id_local ORDER BY mem.id_memorando  DESC LIMIT 4";
 
 $result = mysqli_query($conexao, $sql);
 
@@ -31,6 +30,14 @@ $result = mysqli_query($conexao, $sql);
   <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
   <script src="../lib/jquery-3.2.1.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="../lib/tinymce/tinymce.min.js"></script>
+  <script>
+     tinymce.init({
+
+       selector: '#justificativaU'  //Change this value according to your HTML
+       
+     }); 
+  </script>
 </head>
 <body>
 <div id="container">
@@ -50,10 +57,10 @@ $result = mysqli_query($conexao, $sql);
   	<?php while ($mostra = mysqli_fetch_row($result)): ?>
     <tr id="corpo">
       <td><?php echo $mostra[0] ?></td>
-      <td><?php echo utf8_encode($mostra[1]) ?></td>
-      <td><?php echo utf8_encode($mostra[2]) ?></td>
-      <td><?php echo $mostra[3] ?></td>
-      <td><?php echo utf8_encode($mostra[4]) ?></td>
+      <td><?php echo utf8_encode($mostra[2]." - ".$mostra[1] ) ?></td>
+      <td><?php echo utf8_encode($mostra[3])?></td>
+      <td><?php echo $mostra[4] ?></td>
+      <td><?php echo utf8_encode($mostra[5]) ?></td>
       <td>
         <a href="../controle/print/memorando.print.php?id_mem=<?php echo $mostra[0]?>" class="btn btn-primary btn-xs"><span>
           <span class="glyphicon glyphicon-print"></span>
@@ -78,7 +85,7 @@ $result = mysqli_query($conexao, $sql);
             <h4 class="modal-title" id="myModalLabel">Atualizar Memorando</h4>
           </div>
           <div class="modal-body">
-            <form id="frmClientesU">
+            <form id="frmMemorandoU">
               <input type="text" hidden="" id="idMemorandoU" name="idMemorandoU">
               <label>Nome Local</label>
               <select class="form-control input-sm" name="nome_localU" id="nome_localU">
@@ -97,7 +104,7 @@ $result = mysqli_query($conexao, $sql);
             </form>
           </div>
           <div class="modal-footer">
-            <button id="btnAdicionarClienteU" type="button" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
+            <button id="btnAtualizarMemorandoU" type="button" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
           </div>
         </div>
       </div>
@@ -115,7 +122,6 @@ $result = mysqli_query($conexao, $sql);
           dado=jQuery.parseJSON(r);
 
           $('#idMemorandoU').val(dado['idmemorando']);
-          $('#nome_localU').val(dado['nome_local']);
           $('#dataU').val(dado['data']);
           $('#assuntoU').val(dado['assunto']);
           $('#justificativaU').val(dado['justificativa']);        
@@ -124,20 +130,22 @@ $result = mysqli_query($conexao, $sql);
       });
     }
     $(document).ready(function(){
-      $('#btnAtualizarItemModal').click(function(){
-        dados=$('#frmAtualizarItemCozinhaModal').serialize();
+      $('#btnAtualizarMemorandoU').click(function(){
+
+        var local = document.getElementById("nome_localU").value;
+        dados=$('#frmMemorandoU').serialize();
 
         $.ajax({
           type:"POST",
           data:dados,
-          url:"../../procedimentos/itenscozinha/atualizarItemModal.php",
+          url:"../controle/memorando/updmemorando.cont.php",
           success:function(r){
 
             if(r==1){
-              alertify.success("Item Cozinha atualizado com sucesso!");
+              alert("Atualizado com sucesso!");
               window.location.reload();
             }else{
-              alertify.error("Não foi possível atualizar Item Cozinha");
+              alert("Não foi possível atualizar");
             }
           }
         });

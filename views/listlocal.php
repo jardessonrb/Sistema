@@ -34,7 +34,7 @@ $result = mysqli_query($conexao, $sql);
       <td><?php echo utf8_encode($mostra[1]) ?></td>
       <td><?php echo utf8_encode($mostra[2]) ?></td>
 	  <td>
-		<span  data-toggle="modal" data-target="#abremodalUpdateProduto" class="btn btn-primary btn-xs" onclick="atualizarFuncionario('<?php echo $mostra[0] ?>')">
+		<span  data-toggle="modal" data-target="#abremodalAtualizarLocal" class="btn btn-primary btn-xs" onclick="getDadosMemorando('<?php echo $mostra[0] ?>')">
 			<span class="glyphicon glyphicon-pencil"></span>
 		</span>
       </td>
@@ -43,6 +43,75 @@ $result = mysqli_query($conexao, $sql);
 <?php endwhile; ?>
 </table>
 </div>
+<div class="modal fade" id="abremodalAtualizarLocal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Atualizar Local</h4>
+          </div>
+          <div class="modal-body">
+            <form id="frmAtualizarLocal">
+              <input type="text" hidden="" id="idlocalU" name="idlocalU">
+              <label>Nome Predio</label>
+              <select class="form-control input-sm" name="nome_predioU" id="nome_predioU">
+                <option value="nulo" selected="">Selecione Prédio</option>
+                <option value="Principal">Prédio Principal</option>
+                <option value="Anexo">Prédio Anexo</option>
+                <option value="Luma">Prédio Luma</option>
+              </select>
+              <label>Setor Local</label>
+               <input type="text" class="form-control input-sm" id="setor_localU" name="setor_localU">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btnAtualizarLocalU" type="button" class="btn btn-primary" onclick="teste()" data-dismiss="modal">Atualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 </body>
 </html>
+
+<script type="text/javascript">
+    function getDadosMemorando(id_local){
+      document.getElementById("nome_predioU").disabled = true;
+
+      $.ajax({
+        type:"POST",
+        data:"id_local=" + id_local,
+        url:"../controle/local/getlocal.cont.php",
+        success:function(r){
+          
+          dado=jQuery.parseJSON(r);
+
+          $('#idlocalU').val(dado['get_id_local']);
+          $('#nome_predioU').val(dado['get_nome_predio']);
+          $('#setor_localU').val(dado['get_setor_local']);
+          
+        }
+      });
+    }
+    $(document).ready(function(){
+      $('#btnAtualizarLocalU').click(function(){
+
+        dados=$('#frmAtualizarLocal').serialize();
+
+        $.ajax({
+          type:"POST",
+          data:dados,
+          url:"../controle/local/updlocal.cont.php",
+          success:function(r){
+
+            if(r==1){
+              alert("Atualizado com sucesso!");
+              window.location.reload();
+            }else{
+              alert("Não foi possível atualizar");
+            }
+          }
+        });
+      })
+    })
+</script>

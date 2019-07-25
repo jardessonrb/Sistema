@@ -22,13 +22,21 @@ $nome_func = mysqli_query($conexao, $sql2);
 <html>
 <head>
 	<title>cadastro memorando</title>
+	<script type="text/javascript" src="../lib/tinymce/tinymce.min.js"></script>
+	<script>
+		 tinymce.init({
+
+		   selector: '#nome_justificativa'  //Change this value according to your HTML
+		   
+		 }); 
+     </script>
 </head>
 <body>
 <div class="container"> 
 	<h1>Novo memorando</h1>
 	<div class="row">
-		<div class="col-sm-4">
-			<form id="frmCadMemorando">
+		<div class="col-sm-6">
+			<form id="frmCadMemorando" action="../controle/memorando/cadmemorando.cont.php" method="POST">
 			<label>Nome Local</label>
 			<select class="form-control input-sm" name="nome_local" id="nome_local">
 				<option value="nulo" selected="">Selecione Local</option>
@@ -40,7 +48,7 @@ $nome_func = mysqli_query($conexao, $sql2);
 			<select class="form-control input-sm" name="nome_funcionario" id="nome_funcionario">
 				<option value="nulo" selected="">Selecione o Funcionário</option>
 				<?php while ($mostra = mysqli_fetch_row($nome_func)):?>
-					<option value="<?php echo $mostra[0] ?>"><?php echo utf8_encode($mostra[1])?></option>
+					<option value="<?php echo $mostra[0] ?>"><?php echo utf8_decode($mostra[1])?></option>
 				<?php endwhile; ?>	
 			</select>
 			<label>Destino</label>
@@ -50,6 +58,7 @@ $nome_func = mysqli_query($conexao, $sql2);
 			<label>Justificativa</label>
 			<textarea class="form-control input-sm" id="nome_justificativa" name="nome_justificativa" placeholder="Informo que ..."></textarea>
 			<p></p><br>
+			<button type="submit" name="btnCad">Cadastrar</button>
 			<span class="btn btn-primary" id="btnCadFuncionario">Cadastrar</span>
 			</form>
 		</div>
@@ -60,6 +69,7 @@ $nome_func = mysqli_query($conexao, $sql2);
 </div>
 </body>
 </html>
+
 <script type="text/javascript">
 		$(document).ready(function(){
 
@@ -99,7 +109,7 @@ $nome_func = mysqli_query($conexao, $sql2);
 		var assunto = document.getElementById('nome_assunto').value;
 		var corpo = document.getElementById('nome_justificativa').value;
 		var funcionario = document.getElementById('nome_funcionario').value;
-		if (local == "nulo" || funcionario == "nulo" || destino == "" || assunto == "" || corpo == "" ) {
+		if (local == "nulo" || funcionario == "nulo" || destino == "" || assunto == "" corpo == "") {
 			return 1;
 		}else{
 			return 0;

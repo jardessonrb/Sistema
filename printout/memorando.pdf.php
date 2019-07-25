@@ -15,13 +15,13 @@
 
 	$ver = mysqli_fetch_row($result);
 
-	$emissor  = $ver[0];
-	$destino  = $ver[1];
-	$assunto  = $ver[2];
-	$corpo    = $ver[3];
-	$local1   = $ver[4];
-	$local2   = $ver[5];
-	$funcion  = $ver[6];
+	$emissor  = utf8_encode($ver[0]);
+	$destino  = utf8_encode($ver[1]);
+	$assunto  = utf8_encode($ver[2]);
+	$corpo    = utf8_encode($ver[3]);
+	$local1   = utf8_encode($ver[4]);
+	$local2   = utf8_encode($ver[5]);
+	$funcion  = utf8_encode($ver[6]);
 	$data     = date("Y/m/d");
 	
 
