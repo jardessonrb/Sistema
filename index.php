@@ -43,13 +43,14 @@
 
 		vazios=validarFormVazio('frmLogin');
 
+
 			if(vazios > 0){
 				alert("Preencha os campos!!");
 				return false;
 			}
 
 		dados=$('#frmLogin').serialize();
-		
+	
 		$.ajax({
 			type:"POST",
 			data:dados,

@@ -1,3 +1,9 @@
+<?php 
+
+  if(isset($_SESSION['usuario'])){
+
+ ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -82,4 +88,11 @@
         </ul>     
             </div> <!-- fim barra menu--> 
         </div>
-            
+<?php 
+
+} else{
+  
+  header("location:../index.php");
+}
+
+ ?>

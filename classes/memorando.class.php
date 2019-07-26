@@ -12,9 +12,13 @@ class Memorando{
 		$data = date("Y/m/d");
 		//$emissor = "Emissor Memorando";
 		$emissor = self::buscarFuncionario($id_usuario);
+		$destino = utf8_encode($dados[2]);
+		$assunto = utf8_encode($dados[3]);
+		$corpo   = utf8_encode($dados[4]);
+
 
 		$sql = "INSERT INTO tab_memorando(id_funcionario, id_usuario, id_local, emissor_memorando, data_memorando,destino_memorando, assunto_memorando, corpo_memorando) VALUES
-		('$dados[0]','$id_usuario','$dados[1]','$emissor','$data','$dados[2]','$dados[3]','$dados[4]')";
+		('$dados[0]','$id_usuario','$dados[1]','$emissor','$data','$destino','$assunto','$corpo')";
 
 
 		$result = mysqli_query($conexao, $sql);
@@ -52,10 +56,10 @@ class Memorando{
 		$dados = array(
 			
 			'idmemorando'   => $mostra[0],
-			'nome_local'    => utf8_encode($mostra[1]),
+			'nome_local'    => utf8_decode($mostra[1]),
 			'data'          => $mostra[2],
-			'assunto'       => utf8_encode($mostra[3]),
-			'justificativa' => utf8_decode($mostra[4])
+			'assunto'       => utf8_decode($mostra[3]),
+			'justificativa' => $mostra[4]
 
 		);
 

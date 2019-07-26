@@ -1,3 +1,10 @@
+<?php 
+	session_start();
+	if(isset($_SESSION['usuario'])){
+
+ ?>
+
+
 <?php require_once "menu.php"; ?>
 <!DOCTYPE html>
 <html>
@@ -35,6 +42,14 @@
 
 </body>
 </html>
+<?php 
+
+} else{
+	
+	header("location:../index.php");
+}
+
+ ?>
 <script type="text/javascript">
 	$("#cpf_funcionario").mask("000.000.000-00")
 	$("#telefone1_funcionario").mask("(00) 00000-0000")

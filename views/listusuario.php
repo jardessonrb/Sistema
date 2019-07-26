@@ -1,3 +1,9 @@
+<?php 
+
+  if(isset($_SESSION['usuario'])){
+
+ ?>
+
 <?php require_once "menu.php" ?>
 <!DOCTYPE html>
 <html>
@@ -13,3 +19,11 @@
 </div>
 </body>
 </html>
+<?php 
+
+} else{
+	
+	header("location:../index.php");
+}
+
+ ?>

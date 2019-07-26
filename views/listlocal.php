@@ -1,3 +1,9 @@
+<?php 
+
+  if(isset($_SESSION['usuario'])){
+
+ ?>
+
 <?php require_once "menu.php" ?>
 <?php 
 require_once "../classes/conexao.class.php";
@@ -73,7 +79,14 @@ $result = mysqli_query($conexao, $sql);
 
 </body>
 </html>
+<?php 
 
+} else{
+  
+  header("location:../index.php");
+}
+
+ ?>
 <script type="text/javascript">
     function getDadosMemorando(id_local){
       document.getElementById("nome_predioU").disabled = true;

@@ -1,3 +1,9 @@
+<?php 
+	session_start();
+	if(isset($_SESSION['usuario'])){
+
+ ?>
+
 <?php require_once "menu.php";?>
 <?php 
 require_once "../classes/conexao.class.php";
@@ -52,6 +58,14 @@ $nome = mysqli_query($conexao, $sql);
 		</div>
 </body>
 </html>
+<?php 
+
+} else{
+	
+	header("location:../index.php");
+}
+
+ ?>
 <script type="text/javascript">
 		$(document).ready(function(){
 

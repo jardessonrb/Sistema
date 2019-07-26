@@ -17,7 +17,7 @@ $c = new Conectar();
 $conexao = $c->conexao();
 
 
-$sql =  "SELECT mem.id_memorando,loc.setor_local,loc.nome_predio, usu.nome_usuario, mem.data_memorando, mem.assunto_memorando FROM tab_memorando mem JOIN tab_usuario usu JOIN tab_local loc on mem.id_usuario = usu.id_usuario AND mem.id_local = loc.id_local ORDER BY mem.id_memorando  DESC LIMIT 4";
+$sql = "SELECT mem.id_memorando,loc.setor_local,loc.nome_predio, usu.nome_usuario, mem.data_memorando, fun.nome_funcionario,  mem.assunto_memorando FROM tab_memorando mem JOIN tab_usuario usu JOIN tab_local loc JOIN tab_funcionario fun on mem.id_usuario = usu.id_usuario AND mem.id_local = loc.id_local AND fun.id_funcionario = mem.id_funcionario ORDER BY mem.id_memorando  DESC LIMIT 4";
 
 $result = mysqli_query($conexao, $sql);
 
@@ -44,11 +44,12 @@ $result = mysqli_query($conexao, $sql);
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Numero</th>
+      <th scope="col">N°</th>
       <th scope="col">Setor</th>
       <th scope="col">Usuario</th>
-      <th scope="col">Data Memorando</th>
-      <th scope="col">Asssunto</th>
+      <th scope="col">Data</th>
+      <th scope="col">Funcionário</th>
+      <th scope="col">Assunto</th>
       <th scope="col">Imprimir</th>
       <th scope="col">Editar</th>
     </tr>
@@ -60,7 +61,8 @@ $result = mysqli_query($conexao, $sql);
       <td><?php echo utf8_encode($mostra[2]." - ".$mostra[1] ) ?></td>
       <td><?php echo utf8_encode($mostra[3])?></td>
       <td><?php echo $mostra[4] ?></td>
-      <td><?php echo utf8_encode($mostra[5]) ?></td>
+      <td><?php echo utf8_decode($mostra[5]) ?></td>
+       <td><?php echo utf8_decode($mostra[6]) ?></td>
       <td>
         <a href="../controle/print/memorando.print.php?id_mem=<?php echo $mostra[0]?>" class="btn btn-primary btn-xs"><span>
           <span class="glyphicon glyphicon-print"></span>
@@ -120,6 +122,8 @@ $result = mysqli_query($conexao, $sql);
         success:function(r){
           
           dado=jQuery.parseJSON(r);
+
+          alert(dado['justificativa']);
 
           $('#idMemorandoU').val(dado['idmemorando']);
           $('#dataU').val(dado['data']);
