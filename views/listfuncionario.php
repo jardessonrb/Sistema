@@ -43,10 +43,10 @@ $result = mysqli_query($conexao, $sql);
   <tbody>
   	<?php while ($mostra = mysqli_fetch_row($result)): ?>
     <tr id="corpo">
-      <td><?php echo utf8_encode($mostra[1]) ?></td>
+      <td><?php echo $mostra[1] ?></td>
       <td><?php echo $mostra[2] ?></td>
       <td><?php echo $mostra[3] ?></td>
-      <td><?php echo utf8_encode($mostra[4]) ?></td>
+      <td><?php echo $mostra[4] ?></td>
 	  <td>
 		<span  data-toggle="modal" data-target="#abremodalFuncionarioUpdate" class="btn btn-primary btn-xs" onclick="getDadosFuncionario('<?php echo $mostra[0] ?>')">
 			<span class="glyphicon glyphicon-pencil"></span>

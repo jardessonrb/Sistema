@@ -1,5 +1,5 @@
 <?php 
-
+  session_start();
   if(isset($_SESSION['usuario'])){
 
  ?>
@@ -37,8 +37,8 @@ $result = mysqli_query($conexao, $sql);
   <tbody>
   	<?php while ($mostra = mysqli_fetch_row($result)): ?>
     <tr id="corpo">
-      <td><?php echo utf8_encode($mostra[1]) ?></td>
-      <td><?php echo utf8_encode($mostra[2]) ?></td>
+      <td><?php echo $mostra[1] ?></td>
+      <td><?php echo $mostra[2] ?></td>
 	  <td>
 		<span  data-toggle="modal" data-target="#abremodalAtualizarLocal" class="btn btn-primary btn-xs" onclick="getDadosMemorando('<?php echo $mostra[0] ?>')">
 			<span class="glyphicon glyphicon-pencil"></span>

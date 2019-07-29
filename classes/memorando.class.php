@@ -8,13 +8,13 @@ class Memorando{
 		$c = new Conectar();
 		$conexao = $c->conexao();
 
-		$id_usuario = 1;
+		$id_usuario = 4;
 		$data = date("Y/m/d");
 		//$emissor = "Emissor Memorando";
 		$emissor = self::buscarFuncionario($id_usuario);
-		$destino = utf8_encode($dados[2]);
-		$assunto = utf8_encode($dados[3]);
-		$corpo   = utf8_encode($dados[4]);
+		$destino = $dados[2];
+		$assunto = $dados[3];
+		$corpo   = $dados[4];
 
 
 		$sql = "INSERT INTO tab_memorando(id_funcionario, id_usuario, id_local, emissor_memorando, data_memorando,destino_memorando, assunto_memorando, corpo_memorando) VALUES
@@ -56,9 +56,9 @@ class Memorando{
 		$dados = array(
 			
 			'idmemorando'   => $mostra[0],
-			'nome_local'    => utf8_decode($mostra[1]),
+			'nome_local'    => $mostra[1],
 			'data'          => $mostra[2],
-			'assunto'       => utf8_decode($mostra[3]),
+			'assunto'       => $mostra[3],
 			'justificativa' => $mostra[4]
 
 		);

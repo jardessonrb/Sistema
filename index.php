@@ -1,3 +1,9 @@
+<?php 
+	if(isset($_SESSION['usuario'])){
+		session_destroy();
+	}
+	
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +61,8 @@
 			type:"POST",
 			data:dados,
 			url:"controle/usuario/logarSistema.php",
-			success:function(r){
+			success:function(r){ 
+				
 				if(r==1){
 					window.location="views/inicio.php";
 				}else{

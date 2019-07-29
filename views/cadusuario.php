@@ -32,7 +32,7 @@ $nome = mysqli_query($conexao, $sql);
 					<select class="form-control input-sm" name="nome_funcionario" id="nome_funcionario">
 						<option value="nulo" selected="">Selecione Funcionário</option>
 						<?php while ($mostra = mysqli_fetch_row($nome)):?>
-							<option value="<?php echo $mostra[0] ?>"><?php echo utf8_encode($mostra[1]) ?></option>
+							<option value="<?php echo $mostra[0] ?>"><?php echo $mostra[1] ?></option>
 						<?php endwhile; ?>	
 					</select>
 					<label>Nome Usuario</label>

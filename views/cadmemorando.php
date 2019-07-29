@@ -48,14 +48,14 @@ $nome_func = mysqli_query($conexao, $sql2);
 			<select class="form-control input-sm" name="nome_local" id="nome_local">
 				<option value="nulo" selected="">Selecione Local</option>
 				<?php while ($mostra = mysqli_fetch_row($nome_loc)):?>
-					<option value="<?php echo $mostra[0] ?>"><?php echo $mostra[1]." - ".utf8_encode($mostra[2])?></option>
+					<option value="<?php echo $mostra[0] ?>"><?php echo $mostra[1]." - ".$mostra[2]?></option>
 				<?php endwhile; ?>	
 			</select>
 			<label>Funcionario</label>
 			<select class="form-control input-sm" name="nome_funcionario" id="nome_funcionario">
 				<option value="nulo" selected="">Selecione o Funcionário</option>
 				<?php while ($mostra = mysqli_fetch_row($nome_func)):?>
-					<option value="<?php echo $mostra[0] ?>"><?php echo utf8_decode($mostra[1])?></option>
+					<option value="<?php echo $mostra[0] ?>"><?php echo $mostra[1]?></option>
 				<?php endwhile; ?>	
 			</select>
 			<label>Destino</label>
@@ -63,10 +63,10 @@ $nome_func = mysqli_query($conexao, $sql2);
 			<label>Assunto</label>
 			<input type="text" class="form-control input-sm" id="nome_assunto" name="nome_assunto" placeholder="Ex: Falta por motivos de saúde">
 			<label>Justificativa</label>
-			<textarea class="form-control input-sm" id="nome_justificativa" name="nome_justificativa" placeholder="Informo que ..."></textarea>
+			<textarea class="form-control input-sm" style="height: 500px;" id="nome_justificativa" name="nome_justificativa" placeholder="Informo que ..."></textarea>
 			<p></p><br>
-			<button type="submit" name="btnCad">Cadastrar</button>
-			<span class="btn btn-primary" id="btnCadFuncionario">Cadastrar</span>
+			<button type="submit" class="btn btn-primary" name="btnCad">Cadastrar</button>
+			<!--<span class="btn btn-primary" id="btnCadFuncionario">Cadastrar</span>-->
 			</form>
 		</div>
 		<div class="col-sm-8">

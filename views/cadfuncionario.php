@@ -68,7 +68,6 @@
 				}
 
 				dados=$('#frmCadFuncionario').serialize();
-				alert(dados);
 
 				$.ajax({
 					type:"POST",
@@ -76,7 +75,6 @@
 					url:"../controle/funcionario/cadfuncionario.cont.php",
 					success:function(r){
 
-						alert(r);
 						if(r==1){
 							$('#frmCadFuncionario')[0].reset();
 							alert("Funcionário Adicionado");

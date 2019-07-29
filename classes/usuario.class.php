@@ -9,7 +9,7 @@ class Usuario{
 		
 		session_start();
 		$_SESSION['usuario'] = $dados[0];
-		$_SESSION['iduser'] = self::trazerId($dados);
+		$_SESSION['nivel']   = self::trazerId($dados);
 
 		$sql = "SELECT nome_usuario, senha_usuario FROM tab_usuario WHERE nome_usuario = '$dados[0]' AND senha_usuario = '$dados[1]'";
 

@@ -2,8 +2,8 @@
 	session_start();
 	if(isset($_SESSION['usuario'])){
 
- ?>
 
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +18,7 @@
 <?php 
 
 } else{
-	
 	header("location:../index.php");
 }
 
- ?>
+?>
