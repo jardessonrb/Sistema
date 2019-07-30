@@ -8,7 +8,8 @@ class Memorando{
 		$c = new Conectar();
 		$conexao = $c->conexao();
 
-		$id_usuario = 4;
+		session_start();
+		$id_usuario = $_SESSION['id_user'];
 		$data = date("Y/m/d");
 		//$emissor = "Emissor Memorando";
 		$emissor = self::buscarFuncionario($id_usuario);

@@ -9,7 +9,8 @@ class Usuario{
 		
 		session_start();
 		$_SESSION['usuario'] = $dados[0];
-		$_SESSION['nivel']   = self::trazerId($dados);
+		$_SESSION['nivel']   = self::trazerNI($dados);
+		$_SESSION['id_user']   = self::trazerID($dados);
 
 		$sql = "SELECT nome_usuario, senha_usuario FROM tab_usuario WHERE nome_usuario = '$dados[0]' AND senha_usuario = '$dados[1]'";
 
@@ -37,11 +38,23 @@ class Usuario{
 
 	}
 
-	public function trazerId($dados){
+	public function trazerNI($dados){
 		$c = new Conectar();
 		$conexao = $c->conexao();
 
 		$sql = "SELECT nivel_acesso from tab_usuario where nome_usuario='$dados[0]' and senha_usuario = '$dados[1]' ";
+
+		$result = mysqli_query($conexao, $sql);
+
+		$mostra = mysqli_fetch_row($result);
+
+		return $mostra[0];
+	}
+	public function trazerID($dados){
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT id_usuario from tab_usuario where nome_usuario='$dados[0]' and senha_usuario = '$dados[1]' ";
 
 		$result = mysqli_query($conexao, $sql);
 
