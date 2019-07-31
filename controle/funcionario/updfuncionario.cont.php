@@ -9,10 +9,10 @@ $obj = new Funcionario();
 $dados = array(
 
 	$_POST['idfuncionarioU'],
-	$_POST['nomeU'],
+	utf8_decode($_POST['nomeU']),
 	$_POST['tel01U'],
 	$_POST['tel02U'],
-	$_POST['cargoU'],
+	utf8_decode($_POST['cargoU']),
 	$_POST['cpfU']
 	
 );

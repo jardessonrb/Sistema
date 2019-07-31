@@ -28,10 +28,10 @@ class Funcionario{
 
 		$dados = array(
 			'idfuncionario' => $mostra[0],
-			'nome' 		    => $mostra[1],
+			'nome' 		    => utf8_encode($mostra[1]),
 			'tel01'         => $mostra[2],
 			'tel02'         => $mostra[3],
-			'cargo'         => $mostra[4],
+			'cargo'         => utf8_encode($mostra[4]),
 			'cpf'           => $mostra[5]
 
 		);

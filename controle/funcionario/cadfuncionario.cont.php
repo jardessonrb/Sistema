@@ -6,11 +6,11 @@ $obj = new Funcionario();
 
 $dados = array(
 
-	$_POST['nome_funcionario'],
+	utf8_decode($_POST['nome_funcionario']),
 	$_POST['cpf_funcionario'],
 	$_POST['telefone1_funcionario'],
 	$_POST['telefone2_funcionario'],
-	$_POST['cargo_funcionario']
+	utf8_decode($_POST['cargo_funcionario'])
 
 );
 

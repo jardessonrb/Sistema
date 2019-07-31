@@ -36,9 +36,26 @@ $result = mysqli_query($conexao, $sql);
   <script src="../lib/jquery-3.2.1.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.js"></script>
   <script type="text/javascript" src="../lib/tinymce/tinymce.min.js"></script>
+  <style type="text/css">
+    #pesquisa{
+      border-bottom: 1px solid #8B8989;
+      
+    }
+    #nome_pesquisa{
+      width: 30%;
+      margin-top: 5px;
+      margin-left: 1%;
+    }
+  </style>
 </head>
 <body>
 <div id="container">
+  <div id="pesquisa">
+    <form id="frmBuscar" action="list/listmemorando.php" method="POST">
+      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ...">
+      <button type="submit" class="btn btn-primary" name="btnCad">Buscar</button>
+    </form>
+  </div>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -59,7 +76,7 @@ $result = mysqli_query($conexao, $sql);
       <td><?php echo $mostra[2]." - ".$mostra[1] ?></td>
       <td><?php echo $mostra[3]?></td>
       <td><?php echo $mostra[4] ?></td>
-      <td><?php echo $mostra[5] ?></td>
+      <td><?php echo utf8_encode($mostra[5]) ?></td>
       <td><?php echo $mostra[6] ?></td>
       <td>
         <a href="../controle/print/memorando.print.php?id_mem=<?php echo $mostra[0]?>" class="btn btn-primary btn-xs"><span>
