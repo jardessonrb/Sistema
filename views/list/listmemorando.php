@@ -35,6 +35,7 @@ $result = mysqli_query($conexao, $sql);
 <html>
 <head>
 	<title>listagem de memorando</title>
+  <link rel="stylesheet" type="text/css" href="../../css/listagem.min.css">
   <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.css">
   <script src="../../lib/jquery-3.2.1.min.js"></script>
   <script src="../../lib/bootstrap/js/bootstrap.js"></script>
@@ -42,7 +43,9 @@ $result = mysqli_query($conexao, $sql);
 </head>
 <body>
 <div id="container">
-	
+  <div id="voltar">
+   <span class="btn btn-primary" id="btnNovaPesquisa">Nova Pesquisa</span>
+  </div><br>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -89,7 +92,7 @@ $result = mysqli_query($conexao, $sql);
             <h4 class="modal-title" id="myModalLabel">Atualizar Memorando</h4>
           </div>
           <div class="modal-body">
-            <form id="frmMemorandoU" action="../controle/memorando/updatememorando.cont.php" method="POST">
+            <form id="frmMemorandoU" action="../../controle/memorando/updatememorando.cont.php" method="POST">
               <input type="text" hidden="" id="idMemorandoU" name="idMemorandoU">
               <label>Nome Local</label>
               <select class="form-control input-sm" name="nome_localU" id="nome_localU">
@@ -174,7 +177,7 @@ $result = mysqli_query($conexao, $sql);
       })
     })
 </script>
- <script>
+<script>
   function ativaTinymce(){
 
    tinymce.init({
@@ -184,5 +187,13 @@ $result = mysqli_query($conexao, $sql);
    }); 
 
   }
-  </script>
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+      $('#btnNovaPesquisa').click(function(){
+        window.location = "../listmemorando.php";
+      });
+  });
+</script>
 

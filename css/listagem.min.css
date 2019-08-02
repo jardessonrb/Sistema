@@ -13,3 +13,12 @@
 	background: #333;
 	color: #FFFF;
 }
+.btn{
+position: relative;
+margin-left: 2%;
+}
+input{
+	
+	position: relative;
+	margin-left: 2%;
+}

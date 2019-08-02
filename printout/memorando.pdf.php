@@ -21,7 +21,7 @@
 	$corpo    = utf8_encode($ver[3]);
 	$local1   = utf8_encode($ver[4]);
 	$local2   = utf8_encode($ver[5]);
-	$funcion  = $ver[6];
+	$funcion  = utf8_encode($ver[6]);
 	$data     = date("Y/m/d");
 	
 

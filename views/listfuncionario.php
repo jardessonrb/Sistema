@@ -22,6 +22,7 @@ $result = mysqli_query($conexao, $sql);
 	<title>Lista de Funcionários</title>
 	<link rel="stylesheet" type="text/css" href="../css/listagem.min.css">
   <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../css/pesquisa.min.css">
   <script src="../lib/jquery-3.2.1.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.js"></script>
   <script src="../js/jquery.mask.min.js"></script>
@@ -30,6 +31,12 @@ $result = mysqli_query($conexao, $sql);
 </head>
 <body>
 <div id="container">
+  <div id="pesquisa">
+    <form id="frmBuscar" action="list/listfuncionario.php" method="POST">
+      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ...">
+      <button type="submit" class="btn btn-primary" id="btnPesquisa">Buscar</button>
+    </form>
+  </div>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -153,7 +160,6 @@ $result = mysqli_query($conexao, $sql);
     $(document).ready(function(){
       $('#btnAtualizarFuncionarioU').click(function(){
         dados=$('#frmFuncionarioU').serialize();
-        alert(dados);
 
         $.ajax({
           type:"POST",

@@ -6,12 +6,8 @@ $c = new Conectar();
 $conexao = $c->conexao();
 
 
-if (isset($_POST['id_fun'])) {
-	$sql = "SELECT id_funcionario, nome_funcionario, telefone1_funcionario, telefone2_funcionario, cargo_funcionario FROM tab_funcionario";
-}else{
-	$id = $_POST['id_fun'];
-	$sql = "SELECT id_funcionario, nome_funcionario, telefone1_funcionario, telefone2_funcionario, cargo_funcionario FROM tab_funcionario Where id_funcionario = 'id'";
-}
+
+$sql = "SELECT id_funcionario, nome_funcionario, telefone1_funcionario, telefone2_funcionario, cargo_funcionario FROM tab_funcionario";
 
 $result = mysqli_query($conexao, $sql);
 

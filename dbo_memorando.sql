@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Jul-2019 às 16:43
+-- Generation Time: 02-Ago-2019 às 16:44
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -42,8 +42,10 @@ CREATE TABLE `tab_funcionario` (
 --
 
 INSERT INTO `tab_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcionario`, `telefone1_funcionario`, `telefone2_funcionario`, `cargo_funcionario`) VALUES
-(5, 'Administrador', '12564589500', '86556321578', '86885474592', 'Administrador'),
-(6, 'JÃ¡rdesson Ribeiro', '000.000.000-00', '(86) 96666-6666', '(86) 99999-9999', 'FuncionÃ¡rio');
+(5, 'Administrador', '12564589500', '(00) 00000-0000', '86885474592', 'Administrador 01'),
+(6, 'Járdesson Ribeiro', '000.000.000-00', '(86) 96666-6666', '(86) 99999-9999', 'Funcionário'),
+(8, 'Járdesson funcionário', '122.200.000-00', '(86) 99999-9999', '(68) 95555-5555', 'Funcionário'),
+(9, 'João Administrador', '000.000.000-22', '(86) 59999-9999', '(86) 59999-9999', 'Administrador');
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,7 @@ CREATE TABLE `tab_local` (
 --
 
 INSERT INTO `tab_local` (`id_local`, `nome_predio`, `setor_local`) VALUES
-(5, 'Anexo', 'RecepÃ§Ã£o 01');
+(5, 'Anexo', 'RecepÃ§Ã£o 02');
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,10 @@ CREATE TABLE `tab_memorando` (
 INSERT INTO `tab_memorando` (`id_memorando`, `id_funcionario`, `id_usuario`, `id_local`, `emissor_memorando`, `data_memorando`, `destino_memorando`, `assunto_memorando`, `corpo_memorando`) VALUES
 (24, 6, 4, 5, 'Administrador', '2019-07-29', 'R.H', 'Testando pelo metodo post do proprio PHP', '<h4 style=\"text-align: center;\">Testando formata&ccedil;&atilde;o</h4>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Testando Formata&ccedil;&atilde;o de Memorando</p>\r\n<p>Testando fonte</p>\r\n<p>Testando cadastro</p>'),
 (25, 6, 4, 5, 'Administrador', '2019-07-30', 'ADM', 'Testando no caminho certo', '<h2 style=\"text-align: center;\"><strong>Testando Formata&ccedil;&atilde;o de Memorando</strong></h2>\r\n<h5>testando paragrafo</h5>\r\n<h5>testando outras fontes</h5>\r\n<h5>(utf8 formata&ccedil;&atilde;o, inscri&ccedil;&atilde;o, terminadas em &atilde;o...)</h5>\r\n<h5 style=\"text-align: center;\">&nbsp;</h5>\r\n<p style=\"text-align: left;\">&nbsp;</p>\r\n<p style=\"text-align: left;\">&nbsp;</p>\r\n<p style=\"text-align: left;\">&nbsp;</p>\r\n<p style=\"text-align: left;\"><strong>Testando Atualiza&ccedil;&atilde;o de Modal...</strong></p>'),
-(27, 6, 4, 5, 'Administrador', '2019-07-29', 'R.H', 'Testando Tamanho do EspaÃ§o', '<h5><strong>Testando tamanho de espa&ccedil;amento... bora testar agora a parte de largura <br /></strong></h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5><strong>Teste ...</strong></h5>');
+(27, 6, 4, 5, 'Administrador', '2019-07-29', 'R.H', 'Testando Tamanho do EspaÃ§o', '<h5><strong>Testando tamanho de espa&ccedil;amento... bora testar agora a parte de largura <br /></strong></h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5>&nbsp;</h5>\r\n<h5><strong>Teste ...</strong></h5>'),
+(28, 6, 4, 5, 'Administrador', '2019-07-29', 'R.H', 'Teste na rede', '<p style=\"text-align: center;\"><strong>Testando memorando na rede</strong></p>\r\n<p style=\"text-align: left;\">Testando memorando de teste deddddddd</p>\r\n<p style=\"text-align: left;\">sdsddsdsd</p>\r\n<p style=\"text-align: left;\">sdsdsdsds</p>\r\n<p style=\"text-align: left;\">sdsdsddsds</p>\r\n<p style=\"text-align: left;\">dsdsdds</p>\r\n<p style=\"text-align: left;\">sdsdsd</p>\r\n<p style=\"text-align: left;\">sdsdsdsd</p>\r\n<p style=\"text-align: left;\">sdsdsdsd</p>\r\n<p style=\"text-align: left;\">Ass. J&aacute;rdesson.</p>'),
+(30, 5, 6, 5, 'JÃ¡rdesson Ribeiro', '2019-07-30', 'R.H', 'Teste de id do usuario', '<h6 style=\"text-align: center;\">Testando o id do usuario no memorando</h6>\r\n<p>fechamento de teste de impress&atilde;o.</p>\r\n<p>asdasdasd</p>\r\n<p>&nbsp;</p>\r\n<p>asdasdasdasd</p>\r\n<p><strong>asdasdasd</strong></p>'),
+(31, 6, 4, 5, 'Administrador', '2019-08-02', 'R.H', 'Testando a impressora na sala', '<h2 style=\"text-align: center;\"><strong>Testando Impressora</strong></h2>\r\n<p>testando a formata&ccedil;&atilde;o do memorando e da impressora na sala do T.I, teste</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Ass. J&aacute;rdesson Ribeiro</p>');
 
 -- --------------------------------------------------------
 
@@ -154,7 +159,7 @@ ALTER TABLE `tab_usuario`
 -- AUTO_INCREMENT for table `tab_funcionario`
 --
 ALTER TABLE `tab_funcionario`
-  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tab_local`
@@ -166,7 +171,7 @@ ALTER TABLE `tab_local`
 -- AUTO_INCREMENT for table `tab_memorando`
 --
 ALTER TABLE `tab_memorando`
-  MODIFY `id_memorando` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_memorando` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tab_usuario`

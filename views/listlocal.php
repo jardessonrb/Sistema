@@ -23,9 +23,16 @@ $result = mysqli_query($conexao, $sql);
 	<title>listagem de locais</title>
   <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/listagem.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/pesquisa.min.css">
 </head>
 <body>
-	<div id="container">
+<div id="container">
+  <div id="pesquisa">
+    <form id="frmBuscar" action="list/listlocal.php" method="POST">
+      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ..." required="">
+      <button type="submit" class="btn btn-primary" id="btnPesquisa">Buscar</button>
+    </form>
+  </div>
 <table class="table">
   <thead class="thead-dark">
     <tr>

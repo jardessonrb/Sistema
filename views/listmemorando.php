@@ -32,28 +32,20 @@ $result = mysqli_query($conexao, $sql);
 <html>
 <head>
 	<title>listagem de memorando</title>
+  <link rel="stylesheet" type="text/css" href="../css/listagem.min.css">
   <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../css/pesquisa.min.css">
   <script src="../lib/jquery-3.2.1.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.js"></script>
   <script type="text/javascript" src="../lib/tinymce/tinymce.min.js"></script>
-  <style type="text/css">
-    #pesquisa{
-      border-bottom: 1px solid #8B8989;
-      
-    }
-    #nome_pesquisa{
-      width: 30%;
-      margin-top: 5px;
-      margin-left: 1%;
-    }
-  </style>
+ 
 </head>
 <body>
 <div id="container">
   <div id="pesquisa">
     <form id="frmBuscar" action="list/listmemorando.php" method="POST">
-      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ...">
-      <button type="submit" class="btn btn-primary" name="btnCad">Buscar</button>
+      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ..." required="">
+      <button type="submit" class="btn btn-primary" id="btnPesquisa">Buscar</button>
     </form>
   </div>
 <table class="table">

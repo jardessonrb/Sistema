@@ -1,0 +1,8 @@
+#span_usuario{
+	float: right;
+	background-color: #333;
+}
+#usuario{
+	color: red;
+	text-transform: uppercase;  
+}

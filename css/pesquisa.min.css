@@ -1,0 +1,11 @@
+#nome_pesquisa{
+width: 200px;
+min-width: 180px;
+margin-top: 5px;
+margin-left: 2%;
+}
+#btnPesquisa{
+	position: relative;
+	margin-left: 238px;
+	top: -34px;
+}

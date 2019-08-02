@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/span_usuario.min.css">
         <script src="../../lib/bootstrap/js/jquery-2.2.1.min.js" type="text/javascript">
         </script>
         <script src="../../lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -31,6 +32,7 @@
                 
                 <div class="container">
                 <img src="../../img/LogoNeuroCentro.png" alt=""> 
+                <span id="span_usuario">Usuario: <span id="usuario"><?php echo $_SESSION['usuario'] ?></span> </span>
                        
                 </div>    
             
@@ -67,8 +69,8 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Memorando <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="cadmemorando.php">Novo Memorando</a></li>
-                <li><a href="listmemorando.php">Listagem Memorandos</a></li>    
+                <li><a href="../cadmemorando.php">Novo Memorando</a></li>
+                <li><a href="../listmemorando.php">Listagem Memorandos</a></li>    
             </ul>
           </li>   
 
@@ -82,4 +84,8 @@
         </ul>     
         </div> <!-- fim barra menu--> 
         </div>
+</nav>
+</div>
+</div>        
+</body>
             
