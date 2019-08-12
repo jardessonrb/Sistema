@@ -1,52 +1,24 @@
-<?php 
-
-require_once "../classes/conexao.class.php";
-
-$c = new Conectar();
-$conexao = $c->conexao();
-
-
-
-$sql = "SELECT id_funcionario, nome_funcionario, telefone1_funcionario, telefone2_funcionario, cargo_funcionario FROM tab_funcionario";
-
-$result = mysqli_query($conexao, $sql);
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Teste</title>
-	<link rel="stylesheet" type="text/css" href="../css/listagem.min.css">
+  <title>Teste</title>
 </head>
 <body>
-	<div id="container">
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">Tel 01</th>
-      <th scope="col">Tel 02</th>
-      <th scope="col">Cargo</th>
-      <th scope="col">Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-  	<?php while ($mostra = mysqli_fetch_row($result)): ?>
-    <tr id="corpo">
-      <td><?php echo utf8_encode($mostra[1]) ?></td>
-      <td><?php echo $mostra[2] ?></td>
-      <td><?php echo $mostra[3] ?></td>
-      <td><?php echo utf8_encode($mostra[4]) ?></td>
-	  <td>
-		<span  data-toggle="modal" data-target="#abremodalUpdateProduto" class="btn btn-primary btn-xs" onclick="atualizarFuncionario('<?php echo $mostra[0] ?>')">
-			<span class="glyphicon glyphicon-pencil"></span>
-		</span>
-      </td>
-	</tr>
-</tbody>
-<?php endwhile; ?>
-</table>
-</div>
+<h1>Testando teclado</h1>
 </body>
 </html>
+
+<script>
+
+  window.addEventListener("keydown", checkKeyPress, false);
+
+  function checkKeyPress(key){
+
+    if(key.keyCode ==  "13"){
+
+      alert("Deu certo");
+    }
+
+  }
+
+</script>

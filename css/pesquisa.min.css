@@ -1,11 +1,23 @@
 #nome_pesquisa{
-width: 200px;
-min-width: 180px;
-margin-top: 5px;
-margin-left: 2%;
+
+	width: 200px;
+	min-width: 180px;
+	margin-top: 5px;
+	margin-left: 2%;
 }
 #btnPesquisa{
+
 	position: relative;
 	margin-left: 238px;
-	top: -34px;
+	height: 30px;
+	top: -30px;
+}
+
+#result_zero{
+	width: 100%;
+}
+#mensagem{
+	position: relative;
+	font-size: 20px;
+	font-family: Arial;
 }

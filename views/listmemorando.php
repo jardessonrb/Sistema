@@ -38,6 +38,13 @@ $result = mysqli_query($conexao, $sql);
   <script src="../lib/jquery-3.2.1.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.js"></script>
   <script type="text/javascript" src="../lib/tinymce/tinymce.min.js"></script>
+  <script type="text/javascript">
+    window.onload = function(){
+
+          focus();
+
+    }
+  </script>
  
 </head>
 <body>
@@ -148,6 +155,7 @@ $result = mysqli_query($conexao, $sql);
             $('#dataU').val(dado['data']);
             $('#assuntoU').val(dado['assunto']);
             $('#justificativaU').val(dado['justificativa']); 
+            document.getElementById("dataU").disabled = true;
             ativaTinymce();    
 
           }else{
@@ -179,15 +187,23 @@ $result = mysqli_query($conexao, $sql);
       })
     })
 </script>
- <script>
+<script>
   function ativaTinymce(){
 
-   tinymce.init({
+     tinymce.init({
 
-     selector: '#justificativaU'  //Change this value according to your HTML
-     
-   }); 
+       selector: '#justificativaU'  //Change this value according to your HTML
+       
+     }); 
 
   }
-  </script>
+</script>
+<script type="text/javascript">
 
+  function focus(){
+    
+    document.getElementById("nome_pesquisa").focus();
+
+  }
+
+</script>

@@ -26,6 +26,13 @@ $result = mysqli_query($conexao, $sql);
   <script src="../lib/jquery-3.2.1.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.js"></script>
   <script src="../js/jquery.mask.min.js"></script>
+  <script type="text/javascript">
+    window.onload = function(){
+
+          focus();
+
+    }
+  </script>
   
   
 </head>
@@ -54,11 +61,20 @@ $result = mysqli_query($conexao, $sql);
       <td><?php echo $mostra[2] ?></td>
       <td><?php echo $mostra[3] ?></td>
       <td><?php echo utf8_encode($mostra[4]) ?></td>
-	  <td>
-		<span  data-toggle="modal" data-target="#abremodalFuncionarioUpdate" class="btn btn-primary btn-xs" onclick="getDadosFuncionario('<?php echo $mostra[0] ?>')">
-			<span class="glyphicon glyphicon-pencil"></span>
-		</span>
-    </td>
+    <?php if( $_SESSION['nivel'] == 3): ?>
+  	  <td>
+  		<span  data-toggle="modal" data-target="#abremodalFuncionarioUpdate" class="btn btn-primary btn-xs" onclick="getDadosFuncionario('<?php echo $mostra[0] ?>')">
+  			<span class="glyphicon glyphicon-pencil"></span>
+  		</span>
+      </td>
+    <?php endif ?>
+    <?php if($_SESSION['nivel'] < 3): ?>
+       <td>
+      <span  data-toggle="modal" class="btn btn-primary btn-xs" onclick="mensagem('<?php echo $mostra[1] ?>')">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </span>
+      </td>
+    <?php endif ?>
 	</tr>
 </tbody>
 <?php endwhile; ?>
@@ -177,6 +193,22 @@ $result = mysqli_query($conexao, $sql);
         });
       })
     })
+</script>
+<script type="text/javascript">
+  function mensagem(nome){
+
+    alert('Acesso Negado, nivel de acesso não correspondente!');
+
+  }
+</script>
+<script type="text/javascript">
+
+  function focus(){
+    
+    document.getElementById("nome_pesquisa").focus();
+
+  }
+
 </script>
 
 

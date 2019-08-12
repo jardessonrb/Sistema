@@ -37,6 +37,7 @@ $result = mysqli_query($conexao, $sql);
   </div><br>
 <table class="table">
   <thead class="thead-dark">
+    <?php if(mysqli_num_rows($result) > 0){ ?>
     <tr>
       <th scope="col">Nome</th>
       <th scope="col">Tel 01</th>
@@ -60,6 +61,11 @@ $result = mysqli_query($conexao, $sql);
 	</tr>
 </tbody>
 <?php endwhile; ?>
+<?php }else{ ?>
+  <div id="result_zero">
+    <span id="mensagem">Nenhum registro encontrado com esse valor. Pesquise novamente.</span>
+  </div>
+<?php } ?>
 </table>
 </div>
 <div class="modal fade" id="abremodalFuncionarioUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

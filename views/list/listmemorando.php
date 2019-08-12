@@ -37,6 +37,7 @@ $result = mysqli_query($conexao, $sql);
 	<title>listagem de memorando</title>
   <link rel="stylesheet" type="text/css" href="../../css/listagem.min.css">
   <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../css/pesquisa.min.css">
   <script src="../../lib/jquery-3.2.1.min.js"></script>
   <script src="../../lib/bootstrap/js/bootstrap.js"></script>
   <script type="text/javascript" src="../../lib/tinymce/tinymce.min.js"></script>
@@ -48,6 +49,7 @@ $result = mysqli_query($conexao, $sql);
   </div><br>
 <table class="table">
   <thead class="thead-dark">
+    <?php if(mysqli_num_rows($result) > 0){ ?>
     <tr>
       <th scope="col">N°</th>
       <th scope="col">Setor</th>
@@ -81,6 +83,11 @@ $result = mysqli_query($conexao, $sql);
 	</tr>
 </tbody>
 <?php endwhile; ?>
+<?php }else{ ?>
+  <div id="result_zero">
+    <span id="mensagem">Nenhum registro encontrado com esse valor. Pesquise novamente.</span>
+  </div>
+<?php } ?>  
 </table>
 
 </div>

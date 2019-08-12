@@ -42,18 +42,50 @@
 	</div>
 </body>
 </html>
+<script>
+
+  window.addEventListener("keydown", checkKeyPress, false);
+
+  function checkKeyPress(key){
+
+    if(key.keyCode ==  "13"){
+    	var nome = document.getElementById('usuario').value;
+    	var senha = document.getElementById('senha').value;
+    	if(nome != "" && senha != ""){
+
+    		entrarSistema();
+
+    	}else{
+
+    		alert("Preencha os campos!!");
+    	}
+
+    }
+
+  }
+
+</script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#entrarSistema').click(function(){
 
+			entrarSistema();
+
+		});
+
+	});
+</script>
+
+<script>
+	function entrarSistema(){
+
 		vazios=validarFormVazio('frmLogin');
 
-
-			if(vazios > 0){
-				alert("Preencha os campos!!");
-				return false;
-			}
+		if(vazios > 0){
+			alert("Preencha os campos!!");
+			return false;
+		}
 
 		dados=$('#frmLogin').serialize();
 	
@@ -70,6 +102,6 @@
 				}
 			}
 		});
-	});
-	});
+
+	}
 </script>

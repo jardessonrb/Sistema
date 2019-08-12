@@ -24,6 +24,13 @@ $result = mysqli_query($conexao, $sql);
   <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/listagem.min.css">
   <link rel="stylesheet" type="text/css" href="../css/pesquisa.min.css">
+  <script type="text/javascript">
+    window.onload = function(){
+
+          focus();
+
+    }
+  </script>
 </head>
 <body>
 <div id="container">
@@ -134,4 +141,13 @@ $result = mysqli_query($conexao, $sql);
         });
       })
     })
+</script>
+<script type="text/javascript">
+
+  function focus(){
+    
+    document.getElementById("nome_pesquisa").focus();
+
+  }
+
 </script>

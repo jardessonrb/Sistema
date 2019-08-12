@@ -24,6 +24,7 @@ class Usuario{
 	}
 
 	function cadUsuario($dados){
+
 		$c = new Conectar();
 		$conexao = $c->conexao();
 
@@ -33,12 +34,12 @@ class Usuario{
 
 		$result = mysqli_query($conexao, $sql);
 
-
 		return $result;
 
 	}
 
 	public function trazerNI($dados){
+
 		$c = new Conectar();
 		$conexao = $c->conexao();
 
@@ -50,7 +51,9 @@ class Usuario{
 
 		return $mostra[0];
 	}
+
 	public function trazerID($dados){
+
 		$c = new Conectar();
 		$conexao = $c->conexao();
 

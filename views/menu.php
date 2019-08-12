@@ -62,13 +62,25 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list"></span> Gestão Inicial <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="cadfuncionario.php">Cadastro Funcionário</a></li>
-              <li><a href="cadusuario.php">Cadastro Usuario</a></li>
-              <li><a href="cadlocal.php">Cadastro Local</a></li>
-              <li><a href="listusuario.php">Listagem Usuarios</a></li>
-              <li><a href="listfuncionario.php">Listagem Funcionários</a></li> 
-              <li><a href="listlocal.php">Listagem Locais</a></li> 
-              <li><a href="teste.php">Teste</a></li> 
+             <?php  if($_SESSION['nivel'] == 3): ?>
+                <li><a href="cadfuncionario.php">Cadastro Funcionário</a></li>
+                <li><a href="cadusuario.php">Cadastro Usuario</a></li>
+                <li><a href="cadlocal.php">Cadastro Local</a></li>
+                <li><a href="listusuario.php">Listagem Usuarios</a></li>
+                <li><a href="listfuncionario.php">Listagem Funcionários</a></li> 
+                <li><a href="listlocal.php">Listagem Locais</a></li> 
+                <li><a href="teste.php">Teste</a></li>
+            <?php endif ?>
+            <?php  if($_SESSION['nivel'] == 2): ?>
+                <li><a href="cadlocal.php">Cadastro Local</a></li>
+                <li><a href="listfuncionario.php">Listagem Funcionários</a></li> 
+                <li><a href="listlocal.php">Listagem Locais</a></li> 
+            <?php endif ?>
+            <?php  if($_SESSION['nivel'] == 1): ?>
+                <li><a href="listfuncionario.php">Listagem Funcionários</a></li> 
+                <li><a href="listlocal.php">Listagem Locais</a></li> 
+            <?php endif ?>
+
       
             </ul>
           </li>  
