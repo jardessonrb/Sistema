@@ -96,9 +96,17 @@
 			success:function(r){ 
 				
 				if(r==1){
+
 					window.location="views/inicio.php";
-				}else{
+
+				}
+				if(r==2){
+
 					alert("Acesso Negado!!");
+
+				}else{
+
+					alert("Caractere não aceito!!");
 				}
 			}
 		});

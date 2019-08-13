@@ -4,22 +4,31 @@ class Usuario{
 
 	function logarSistema($dados){
 
-		$c = new Conectar();
-		$conexao = $c->conexao();
-		
-		session_start();
-		$_SESSION['usuario'] = $dados[0];
-		$_SESSION['nivel']   = self::trazerNI($dados);
-		$_SESSION['id_user']   = self::trazerID($dados);
-
-		$sql = "SELECT nome_usuario, senha_usuario FROM tab_usuario WHERE nome_usuario = '$dados[0]' AND senha_usuario = '$dados[1]'";
-
-		$result = mysqli_query($conexao, $sql);
-
-		if (mysqli_num_rows($result) > 0) {
+		if(self::NotSqlN($dados[0]) == true && self::NotSqlS($dados[1]) == true){
+ 
+			$c = new Conectar();
+			$conexao = $c->conexao();
 			
-			 return  1;
-		}	
+			session_start();
+			$_SESSION['usuario'] = $dados[0];
+			$_SESSION['nivel']   = self::trazerNI($dados);
+			$_SESSION['id_user']   = self::trazerID($dados);
+
+	        $sql = "SELECT nome_usuario, senha_usuario FROM tab_usuario WHERE nome_usuario = '$dados[0]' AND senha_usuario = '$dados[1]'";
+
+			$result = mysqli_query($conexao, $sql);
+
+			if (mysqli_num_rows($result) > 0) {
+				
+				return  1;
+			}else{
+
+				return 2;
+
+			}
+
+		}
+		return 3;
 
 	}
 
@@ -65,6 +74,47 @@ class Usuario{
 
 		return $mostra[0];
 	}
+
+	public function NotSqlN($strNome){
+
+    	$status = true;
+
+    	$arr1 = str_split($strNome);
+
+    	for($i = 0; $i < count($arr1); $i++ ){
+
+			if($arr1[$i] == "'" || $arr1[$i] == "@" || $arr1[$i] == "#" || $arr1[$i] == "!" || $arr1[$i] == "1" || $arr1[$i] == "&"){
+
+				$status = false;
+			}
+		
+	    }
+
+	    return $status;
+
+	}
+
+	public function NotSqlS($strSenha){
+
+    	$stat = true;
+
+    	$arr2 = str_split($strSenha);
+
+    	for($j = 0; $j < count($arr2); $j++ ){
+
+			if($arr2[$j] == "'" || $arr2[$j] == "@" || $arr2[$j] == "#" || $arr2[$j] == "!" || $arr2[$j] == " " || $arr2[$i] == "&"){
+
+				$stat = false;
+			}
+		
+	    }
+
+	    return $stat;
+
+	}
+
+
 }
+
 
 ?>

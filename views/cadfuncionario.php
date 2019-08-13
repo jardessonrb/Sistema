@@ -85,7 +85,7 @@
 				});
 			});
 		});
-	</script>
+</script>
 <script type="text/javascript">
 	function verCampo(){
 		var nome = document.getElementById('nome_funcionario').value;
