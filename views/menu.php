@@ -43,21 +43,16 @@
             
             </div><!-- fim da div topo -->
             
-            <!-- começa a barra MENU-->
-            <div class="row" id="barra-menu">
+        <!-- começa a barra MENU-->
+        <div class="row" id="barra-menu">
                 
                 <!--começa navBAR-->
-                <nav class="navbar navbar-inverse">
+                <nav class="navbar navbar-collapse">
                     
                     <!-- container navBAr-->
-                    <ul class="nav navbar-nav navbar-right">
-            <!--<span id="mostra_usuario" style="color: #FFFF;">Usuario: <?php echo $_SESSION['usuario'] ?></span>-->
-            
-
+        <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span> Inicio</a>
             </li>
-
-
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list"></span> Gestão Inicial <span class="caret"></span></a>

@@ -21,14 +21,18 @@ class Usuario{
 			if (mysqli_num_rows($result) > 0) {
 				
 				return  1;
+
 			}else{
 
 				return 2;
 
 			}
 
+		}else{
+
+			return 3;
+			
 		}
-		return 3;
 
 	}
 
@@ -102,7 +106,7 @@ class Usuario{
 
     	for($j = 0; $j < count($arr2); $j++ ){
 
-			if($arr2[$j] == "'" || $arr2[$j] == "@" || $arr2[$j] == "#" || $arr2[$j] == "!" || $arr2[$j] == " " || $arr2[$i] == "&"){
+			if($arr2[$j] == "'" || $arr2[$j] == "@" || $arr2[$j] == "#" || $arr2[$j] == "!" || $arr2[$j] == " " || $arr2[$j] == "&"){
 
 				$stat = false;
 			}
