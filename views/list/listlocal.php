@@ -25,7 +25,7 @@ $result = mysqli_query($conexao, $sql);
 	<title>listagem de locais</title>
   <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../../css/listagem.min.css">
-  <link rel="stylesheet" type="text/css" href="../../css/pesquisa.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/pesquisa2.min.css">
 </head>
 <body>
 <div id="container">
