@@ -13,12 +13,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="../css/span_usuario.min.css">
         <script src="../lib/bootstrap/js/jquery-2.2.1.min.js" type="text/javascript">
         </script>
         <script src="../lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- meu aquivo pessoal de CSS-->
         <link href="../lib/bootstrap/css/tema.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/ajustes.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
         

@@ -11,26 +11,15 @@
 	background-color: #333;
 }
 
-a{
+#btnNovaPesquisa{
 
-	font-size: 16px;
-	color: #FFFF;
-
+	position: relative;
+	top: 8px;
 }
-.active a{
+#barra-menu{
 
-	color: #FFFF;
-}
-
-.dropdown a{
-	
-	color: #FFFF;
-
-}
-.dropdown-menu{
-
-	font-size: 15px;
 	background-color: #333;
-	color: #FFFF;;
-
+}
+.dropdown-menu li a{
+	background-color: #FFFF;
 }
