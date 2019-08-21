@@ -93,11 +93,11 @@ $result = mysqli_query($conexao, $sql);
 </table>
 
 </div>
-<div class="modal fade" id="abremodalMemorandoUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="abremodalMemorandoUpdate" data-target="#mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
       <div class="modal-dialog modal-xm-8" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" id="btnTeste" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Atualizar Memorando</h4>
           </div>
           <div class="modal-body">
@@ -206,4 +206,14 @@ $result = mysqli_query($conexao, $sql);
 
   }
 
+</script>
+
+<script type="text/javascript">
+ $(document).ready(function(){
+      $('#btnTeste').click(function(){
+        
+        window.location.reload();
+
+      })
+    })
 </script>

@@ -2,6 +2,7 @@
 	float: right;
 	background-color: #333;
 }
+
 #usuario{
 	color: red;
 	text-transform: uppercase;  
@@ -23,3 +24,15 @@
 .dropdown-menu li a{
 	background-color: #FFFF;
 }
+
+ul li a{
+
+	color: #FFFF;
+	font-size: 16px;
+
+}
+
+li a:hover{
+	color: #0000FF;
+}
+

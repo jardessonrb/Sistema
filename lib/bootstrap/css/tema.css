@@ -3,7 +3,7 @@
 min-height: 100px;
 background-color: #003300;
 color: #fff;
-    
+
 }
 
 #rodape{
@@ -21,9 +21,9 @@ padding-top:30px;
 }
 
 #lateral{
-    
-   border-right: 1px solid #adadad;
-   height: 100%;
+  
+    border-right: 1px solid #adadad;
+    height: 100%;
 }
 .transparente{
    opacity: 0.9;   
