@@ -97,7 +97,7 @@ $result = mysqli_query($conexao, $sql);
       <div class="modal-dialog modal-xm-8" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" id="btnTeste" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" id="fecharModal" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Atualizar Memorando</h4>
           </div>
           <div class="modal-body">
@@ -210,7 +210,7 @@ $result = mysqli_query($conexao, $sql);
 
 <script type="text/javascript">
  $(document).ready(function(){
-      $('#btnTeste').click(function(){
+      $('#fecharModal').click(function(){
         
         window.location.reload();
 
