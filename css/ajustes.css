@@ -1,3 +1,50 @@
+/*LINK DE CSS PESQUISA.MIN.CSS*/
+#nome_pesquisa{
+
+	width: 200px;
+	min-width: 180px;
+	margin-top: 5px;
+	margin-left: 2%;
+}
+#btnPesquisa{
+
+	position: relative;
+	margin-left: 238px;
+	height: 30px;
+	top: -30px;
+}
+
+#result_zero{
+	width: 100%;
+}
+#mensagem{
+	position: relative;
+	font-size: 20px;
+	font-family: Arial;
+}
+/*##########################*/
+/*CSS DE LISTAGEM, TABELAS E ESTILOS*/
+#container table{
+	position: relative;
+	width: 95%;
+	margin-left: 2%;
+	border: 1px solid #333;
+}
+.thead-dark{
+	background: #333;
+	color: #FFFF;
+}
+.btn{
+position: relative;
+margin-left: 2%;
+}
+input{
+	
+	position: relative;
+	margin-left: 2%;
+}
+/*##########################*/
+
 #span_usuario{
 	float: right;
 	background-color: #333;
@@ -11,6 +58,7 @@
 
 	background-color: #333;
 }
+
 
 #btnNovaPesquisa{
 

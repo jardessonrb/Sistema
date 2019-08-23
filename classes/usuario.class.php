@@ -117,6 +117,32 @@ class Usuario{
 
 	}
 
+	public function getDadosUsuario($id_usuario){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT id_usuario, nome_usuario, senha_usuario, nivel_acesso from tab_usuario where id_usuario = '$id_usuario'";
+
+		$result = mysqli_query($conexao, $sql);
+
+		$mostra = mysqli_fetch_row($result);
+
+		$dados = array(
+
+			'id_usuario'      => $mostra[0],
+			'nome_usuario' 	  => utf8_encode($mostra[1]),
+			'senha_usuario'   => $mostra[2],
+			'nivel_acesso'    => $mostra[3]
+			
+
+		);
+
+		return $dados;
+
+
+	}
+
 
 }
 

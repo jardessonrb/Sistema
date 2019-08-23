@@ -3,12 +3,24 @@
   if(isset($_SESSION['usuario'])){
 
  ?>
+ <?php 
+require_once "../classes/conexao.class.php";
+
+$c = new Conectar();
+$conexao = $c->conexao();
+
+$sql = "SELECT id_usuario, fun.nome_funcionario, captura_usuario, nome_usuario, senha_usuario, nivel_acesso FROM tab_usuario usu JOIN tab_funcionario  fun on usu.id_funcionario = fun.id_funcionario";
+
+$result = mysqli_query($conexao, $sql);
+
+?>
 
 <?php require_once "menu.php" ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
+  <link rel="stylesheet" type="text/css" href="../css/ajustes.css">
 	<script src="../lib/jquery-3.2.1.min.js"></script>
 	<script src="../js/funcoes.js"></script>
 	<script src="../js/jquery.mask.min.js"></script>
@@ -21,9 +33,92 @@
 	</script>
 </head>
 <body>
-<div id="testediv">
-	
+<div id="container">
+  <div id="pesquisa">
+    <form id="frmBuscar" action="list/listusuario.php" method="POST">
+      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ...">
+      <button type="submit" class="btn btn-primary" id="btnPesquisa">Buscar</button>
+    </form>
+  </div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id_Usario</th>
+      <th scope="col">Nome Funcionário</th>
+      <th scope="col">Captura</th>
+      <th scope="col">Nome Usuario</th>
+      <th scope="col">Senha Usuario</th>
+      <th scope="col">nivel de Acesso</th>
+      <th scope="col">Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<?php while ($mostra = mysqli_fetch_row($result)): ?>
+    <tr id="corpo">
+      <td><?php echo $mostra[0] ?></td>
+      <td><?php echo utf8_encode($mostra[1]) ?></td>
+      <td><?php echo $mostra[2] ?></td>
+      <td><?php echo $mostra[3] ?></td>
+      <td>######</td>
+      <?php if( $mostra[5] == 3): ?>
+      <td>Alto</td>
+      <?php endif ?>
+      <?php if( $mostra[5] == 2): ?>
+      	<td>Medio</td>
+      <?php endif ?>
+      <?php if( $mostra[5] == 1): ?>
+      	<td>Baixo</td>
+      <?php endif ?>
+    <?php if( $_SESSION['nivel'] == 3): ?>
+  	  <td>
+  		<span  data-toggle="modal" data-target="#abremodalUsuarioUpdate" class="btn btn-primary btn-xs" onclick="getDadosUsuario('<?php echo $mostra[0] ?>')">
+  			<span class="glyphicon glyphicon-pencil"></span>
+  		</span>
+      </td>
+    <?php endif ?>
+    <?php if($_SESSION['nivel'] < 3): ?>
+       <td>
+      <span  data-toggle="modal" class="btn btn-primary btn-xs" onclick="mensagem('<?php echo $mostra[1] ?>')">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </span>
+      </td>
+    <?php endif ?>
+	</tr>
+</tbody>
+<?php endwhile; ?>
+</table>
 </div>
+<div class="modal fade" id="abremodalUsuarioUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Atualizar Usuário</h4>
+          </div>
+          <div class="modal-body">
+            <form id="frmFuncionarioU">
+              <input type="text" hidden="" id="id_usuario" name="id_usuario">
+              <label>Nome Usuario</label>
+              <input type="text" class="form-control input-sm" id="nome_usuario" name="nome_usuario">
+              <label>Nova Senha</label>
+              <input type="password" class="form-control input-sm" id="senhaU" name="senhaU">
+              <label>Confirmar Senha</label>
+              <input type="password" maxlength="10" class="form-control input-sm" id="senhaU2" name="senhaU2">
+              <label>Nivel de Acesso</label>
+              <select class="form-control input-sm" name="nivel_acesso" id="nivel_acesso">
+                  <option value="nulo" selected="">Selecione Nivel</option>
+                  <option value="1">Baixo</option>
+                  <option value="2">Medio</option>
+                  <option value="3">Alto</option>
+              </select>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btnAtualizarFuncionarioU" type="button" class="btn btn-primary" onclick="teste()" data-dismiss="modal">Atualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
 <?php 
@@ -42,4 +137,25 @@
 
   }
 
+</script>
+<script type="text/javascript">
+    function getDadosUsuario(id_usuario){
+
+      $.ajax({
+        type:"POST",
+        data:"id_usuario=" + id_usuario,
+        url:"../controle/usuario/getusuario.cont.php",
+        success:function(r){
+          alert(r);
+         
+          dado=jQuery.parseJSON(r);
+
+          $('#id_usuario').val(dado['id_usuario']);
+          $('#nome_usuario').val(dado['nome_usuario']);
+          $('#senhaU').val(dado['senha_usuario']);
+          $('#nivel_acesso').val(dado['nivel_acesso']);
+          
+        }
+      });
+    }
 </script>
