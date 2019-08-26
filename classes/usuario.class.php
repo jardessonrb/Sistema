@@ -143,6 +143,20 @@ class Usuario{
 
 	}
 
+	public function updateUsuario($dados){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "UPDATE tab_usuario SET senha_usuario = '$dados[1]', nivel_acesso = '$dados[2]' WHERE id_usuario = '$dados[0]'; ";
+
+
+		$result = mysqli_query($conexao, $sql);
+
+
+		return $result;
+	}
+
 
 }
 
