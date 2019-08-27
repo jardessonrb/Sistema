@@ -36,7 +36,7 @@
  				height: 930px;
  				width: 620px;
  				border: 1px solid;
- 				border-color: #cc0000;
+ 				border-color: #333;
  			}
  			/*Definição de tamnho para formatação*/
  			#cabecalho{
@@ -92,6 +92,7 @@
  				text-align: justify;
  				font-size: 16px;
  				margin-top: 20px;
+ 				margin-right: 2px;
  			}
  			p{
  				margin-left: 20px;
