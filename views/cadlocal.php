@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container"> 
-	<h1>Cadastro de Local</h1>
+	<h1 class="titulo_cadastro">Cadastro de Local</h1>
 	<div class="row">
 		<div class="col-sm-4">
 			<form id="frmCadLocal">
@@ -28,7 +28,7 @@
 			<label>Setor Local</label>
 			<input type="text" class="form-control input-sm" id="nome_setor" name="nome_setor" placeholder="Ex: Recepção 1° andar">
 			<p></p><br>
-			<span class="btn btn-primary" id="btnCadFuncionario">Cadastrar</span>
+			<span class="btn btn-primary" id="btnCadastrar">Cadastrar</span>
 			</form>
 		</div>
 		<div class="col-sm-8">
@@ -60,7 +60,7 @@
 <script type="text/javascript">
 		$(document).ready(function(){
 
-			$('#btnCadFuncionario').click(function(){
+			$('#btnCadastrar').click(function(){
 
 				vazios=verCampo();
 

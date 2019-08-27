@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="container">
-			<h1>Cadastro do Funcionario</h1>
+			<h1 class="titulo_cadastro">Cadastro do Funcionário</h1>
 			<div class="row">
 				<div class="col-sm-4">
 					<form id="frmCadFuncionario">
@@ -31,7 +31,7 @@
 					<label>Cargo</label>
 					<input type="text" class="form-control input-sm" id="cargo_funcionario" name="cargo_funcionario">
 					<p></p>
-					<span class="btn btn-primary" id="btnCadFuncionario">Cadastrar</span>
+					<span class="btn btn-primary" id="btnCadastrar">Cadastrar</span>
 					</form>
 				</div>
 				<div class="col-sm-8">
@@ -58,7 +58,7 @@
 <script type="text/javascript">
 		$(document).ready(function(){
 
-			$('#btnCadFuncionario').click(function(){
+			$('#btnCadastrar').click(function(){
 
 				vazios=verCampo();
 

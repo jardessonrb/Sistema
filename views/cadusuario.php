@@ -21,10 +21,11 @@ $nome = mysqli_query($conexao, $sql);
 <html>
 <head>
 	<title>Cadastro de Usuario</title>
+	<script src="../lib/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 <div class="container"> 
-			<h1>Cadastro de Usuario</h1>
+			<h1 class="titulo_cadastro">Cadastro de Usuário</h1>
 			<div class="row">
 				<div class="col-sm-4">
 					<form id="frmCadUsuario">
@@ -48,7 +49,7 @@ $nome = mysqli_query($conexao, $sql);
 							<option value="3">Alto</option>
 					</select>
 					<p></p><br>
-					<span class="btn btn-primary" id="btnCadFuncionario">Cadastrar</span>
+					<span class="btn btn-primary" id="btnCadastrar">Cadastrar</span>
 					</form>
 				</div>
 				<div class="col-sm-8">
@@ -69,7 +70,7 @@ $nome = mysqli_query($conexao, $sql);
 <script type="text/javascript">
 		$(document).ready(function(){
 
-			$('#btnCadFuncionario').click(function(){
+			$('#btnCadastrar').click(function(){
 
 				vazios=verCampo();
 
@@ -86,11 +87,21 @@ $nome = mysqli_query($conexao, $sql);
 					url:"../controle/usuario/cadusuario.cont.php",
 					success:function(r){
 						
+						if(r==3){
+
+							alert("Funcionário já possui usuário.");
+
+						}
+
 						if(r==1){
+
 							$('#frmCadUsuario')[0].reset();
 							alert("Usuario Adicionado");
+
 						}else{
+
 							alert("Não foi possível adicionar");
+
 						}
 					}
 				});

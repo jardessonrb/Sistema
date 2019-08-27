@@ -19,6 +19,7 @@
         <!-- meu aquivo pessoal de CSS-->
         <link href="../lib/bootstrap/css/tema.css" rel="stylesheet" type="text/css"/>
         <link href="../css/ajustes.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="../css/ajustes.css">
 </head>
 <body>
         

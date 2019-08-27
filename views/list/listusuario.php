@@ -91,7 +91,7 @@ $result = mysqli_query($conexao, $sql);
             <h4 class="modal-title" id="myModalLabel">Atualizar Usuário</h4>
           </div>
           <div class="modal-body">
-            <form id="frmFuncionarioU">
+            <form id="frmUsuarioU">
               <input type="text" hidden="" id="id_usuario" name="id_usuario">
               <label>Nome Usuario</label>
               <input type="text" class="form-control input-sm" id="nome_usuario" name="nome_usuario">
@@ -109,7 +109,7 @@ $result = mysqli_query($conexao, $sql);
             </form>
           </div>
           <div class="modal-footer">
-            <button id="btnAtualizarFuncionarioU" type="button" class="btn btn-primary" onclick="teste()" data-dismiss="modal">Atualizar</button>
+            <button id="btnAtualizarUsuarioU" type="button" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
           </div>
         </div>
       </div>
@@ -146,6 +146,60 @@ $result = mysqli_query($conexao, $sql);
         }
       });
     }
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('#btnAtualizarUsuarioU').click(function(){
+
+        if(verifica() == true){
+
+        dados=$('#frmUsuarioU').serialize();
+
+        alert(dados);
+        
+        $.ajax({
+          type:"POST",
+          data:dados,
+          url:"../../controle/usuario/updusuario.cont.php",
+          success:function(r){
+
+            if(r==1){
+              alert("Atualizado com sucesso!");
+              window.location.reload();
+            }else{
+              alert("Não foi possível Atualizar");
+            }
+          }
+        });
+      }else{
+
+        alert("Senha de confirmação não correspondente.");
+      }
+    })
+ })
+</script>
+<script type="text/javascript">
+  function verifica(){
+    var senha1 = document.getElementById("senhaU").value;
+    var senha2 = document.getElementById("senhaU2").value;
+
+    if(senha1 != ""){
+
+      if(senha1 == senha2){
+
+          return true;
+
+      }else{
+
+          return false;
+
+      }
+
+    }else{
+
+      return false;
+    }
+  }
 </script>
 
 <script type="text/javascript">

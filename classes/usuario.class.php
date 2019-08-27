@@ -36,18 +36,41 @@ class Usuario{
 
 	}
 
-	function cadUsuario($dados){
+	public function cadUsuario($dados){
 
 		$c = new Conectar();
 		$conexao = $c->conexao();
 
 		$data = date("Y/m/d");
 
+		$num = self::verFunUsuario($dados[0]);
+
+		if($num > 0){
+
+			return 3;
+			
+		}else{
+
 		$sql = "INSERT INTO tab_usuario(id_funcionario, nome_usuario, senha_usuario, nivel_acesso, captura_usuario) VALUES ('$dados[0]', '$dados[1]', '$dados[2]', '$dados[3]', '$data')";
 
 		$result = mysqli_query($conexao, $sql);
 
 		return $result;
+
+	    }
+
+	}
+
+	public function verFunUsuario($id_func){
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT * FROM tab_usuario WHERE id_funcionario = '$id_func';";
+
+		$result = mysqli_query($conexao, $sql);
+
+
+		return mysqli_num_rows($result);
 
 	}
 

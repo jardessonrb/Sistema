@@ -83,4 +83,9 @@ ul li a{
 li a:hover{
 	color: #0000FF;
 }
+input{margin-left: -1px;}
+
+#btnCadastrar{margin-left: -1px;}
+
+.titulo_cadastro{ font-family:  }
 

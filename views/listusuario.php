@@ -166,15 +166,12 @@ $result = mysqli_query($conexao, $sql);
         if(verifica() == true){
 
         dados=$('#frmUsuarioU').serialize();
-        alert(dados);
-
+        
         $.ajax({
           type:"POST",
           data:dados,
           url:"../controle/usuario/updusuario.cont.php",
           success:function(r){
-
-            alert(r);
 
             if(r==1){
               alert("Atualizado com sucesso!");

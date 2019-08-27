@@ -103,6 +103,8 @@
 				if(r==2){
 
 					alert("Acesso Negado!!");
+					document.getElementById("senha").value = "";
+					document.getElementById("usuario").focus();
 
 				}else{
 

@@ -40,7 +40,7 @@ $nome_func = mysqli_query($conexao, $sql2);
 </head>
 <body>
 <div class="container"> 
-	<h1>Novo memorando</h1>
+	<h1 class="titulo_cadastro">Novo memorando</h1>
 	<div class="row">
 		<div class="col-sm-6">
 			<form id="frmCadMemorando" action="../controle/memorando/cadmemorando.cont.php" method="POST">
@@ -65,7 +65,7 @@ $nome_func = mysqli_query($conexao, $sql2);
 			<label>Justificativa</label>
 			<textarea class="form-control input-sm" style="height: 500px;" id="nome_justificativa" name="nome_justificativa" placeholder="Informo que ..."></textarea>
 			<p></p><br>
-			<button type="submit" class="btn btn-primary" name="btnCad">Cadastrar</button>
+			<button type="submit" class="btn btn-primary" id="btnCadastrar" name="btnCad">Cadastrar</button>
 			<!--<span class="btn btn-primary" id="btnCadFuncionario">Cadastrar</span>-->
 			</form>
 		</div>
