@@ -1,9 +1,4 @@
-<?php 
-	if(isset($_SESSION['usuario'])){
-		session_destroy();
-	}
-	
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,3 +110,4 @@
 
 	}
 </script>
+

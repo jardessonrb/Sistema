@@ -60,9 +60,9 @@ $result = mysqli_query($conexao, $sql);
     <tr>
       <th scope="col">N°</th>
       <th scope="col">Setor</th>
-      <th scope="col">Usuario</th>
+      <th scope="col">Criado por:</th>
       <th scope="col">Data</th>
-      <th scope="col">Funcionário</th>
+      <th scope="col">Referente:</th>
       <th scope="col">Assunto</th>
       <th scope="col">Imprimir</th>
       <th scope="col">Editar</th>

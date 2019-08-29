@@ -24,6 +24,7 @@ $result = mysqli_query($conexao, $sql);
   <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/listagem.min.css">
   <link rel="stylesheet" type="text/css" href="../css/pesquisa.min.css">
+  
   <script type="text/javascript">
     window.onload = function(){
 
@@ -45,7 +46,7 @@ $result = mysqli_query($conexao, $sql);
     <tr>
       <th scope="col">Nome Prédio</th>
       <th scope="col">Setor</th>
-      <th scope="col">Editar</th>
+      <th scope="col" id="editar">Editar</th>
     </tr>
   </thead>
   <tbody>

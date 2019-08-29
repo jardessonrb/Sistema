@@ -61,7 +61,7 @@ $nome_func = mysqli_query($conexao, $sql2);
 			<label>Destino</label>
 			<input type="text" class="form-control input-sm" id="nome_destino" name="nome_destino" placeholder="Ex: R.H">
 			<label>Assunto</label>
-			<input type="text" class="form-control input-sm" id="nome_assunto" name="nome_assunto" placeholder="Ex: Falta por motivos de saúde">
+			<input type="text" class="form-control input-sm" id="nome_assunto" name="nome_assunto" placeholder="Ex: Falta por motivo de saúde">
 			<label>Justificativa</label>
 			<textarea class="form-control input-sm" style="height: 500px;" id="nome_justificativa" name="nome_justificativa" placeholder="Informo que ..."></textarea>
 			<p></p><br>

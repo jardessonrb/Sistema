@@ -43,19 +43,17 @@ $result = mysqli_query($conexao, $sql);
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Id_Usario</th>
       <th scope="col">Nome Funcionário</th>
       <th scope="col">Captura</th>
       <th scope="col">Nome Usuario</th>
       <th scope="col">Senha Usuario</th>
-      <th scope="col">nivel de Acesso</th>
+      <th scope="col">Nível de Acesso</th>
       <th scope="col">Editar</th>
     </tr>
   </thead>
   <tbody>
   	<?php while ($mostra = mysqli_fetch_row($result)): ?>
     <tr id="corpo">
-      <td><?php echo $mostra[0] ?></td>
       <td><?php echo utf8_encode($mostra[1]) ?></td>
       <td><?php echo $mostra[2] ?></td>
       <td><?php echo $mostra[3] ?></td>

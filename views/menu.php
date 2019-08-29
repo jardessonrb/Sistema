@@ -4,6 +4,14 @@
 
  ?>
 
+
+<?php 
+require_once "../classes/rotas.php";
+
+$rt = new Rotas();
+
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -46,7 +54,7 @@
                     
                     <!-- container navBAr-->
         <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span> Inicio</a>
+            <li class="active"><a href="<?php echo $rt->get_inicio(); ?>"><span class="glyphicon glyphicon-home"></span> Inicio</a>
             </li>
           </li>
           <li class="dropdown">
