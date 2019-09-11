@@ -2,7 +2,7 @@
 	session_start();
 	if(isset($_SESSION['usuario'])){
 
- ?>
+?>
 
 
 <?php require_once "menu.php"; ?>
@@ -31,14 +31,14 @@
 					<label>Cargo</label>
 					<input type="text" class="form-control input-sm" id="cargo_funcionario" name="cargo_funcionario">
 					<p></p>
-					<span class="btn btn-primary" id="btnCadastrar">Cadastrar</span>
+					<span class="btn btn-primary" id="btnCadastrar"><span class="glyphicon glyphicon-plus"> Cadastrar</span></span>
 					</form>
 				</div>
 				<div class="col-sm-8">
 					<div id="tabelaClientesLoad"></div>
 				</div>
 			</div>
-		</div>
+	</div>
 
 </body>
 </html>

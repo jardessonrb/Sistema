@@ -2,7 +2,7 @@
   session_start();
   if(isset($_SESSION['usuario'])){
 
- ?>
+?>
 
 <?php require_once "menu.php" ?>
 <?php 
@@ -41,7 +41,8 @@ $result = mysqli_query($conexao, $sql);
   <div id="pesquisa">
     <form id="frmBuscar" action="list/listfuncionario.php" method="POST">
       <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ...">
-      <button type="submit" class="btn btn-primary" id="btnPesquisa">Buscar</button>
+      <button type="submit" class="btn btn-primary" id="btnPesquisa"><span class="glyphicon glyphicon-search">&nbsp;Buscar
+      </span></button>
     </form>
   </div>
 <table class="table">
@@ -145,7 +146,7 @@ $result = mysqli_query($conexao, $sql);
   header("location:../index.php");
 }
 
- ?>
+?>
 <script type="text/javascript">
   $("#cpfU").mask("000.000.000-00")
   $("#tel01U").mask("(00) 00000-0000")

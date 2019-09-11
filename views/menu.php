@@ -17,6 +17,7 @@ $rt = new Rotas();
 <html>
     <head>
         <title>Sistema-Memorando</title>
+        <link rel="shortcut icon" href="../img/IconeEmpresa.ico" type="image/x-icon" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -64,7 +65,9 @@ $rt = new Rotas();
                 <li><a href="cadfuncionario.php">Cadastro Funcionário</a></li>
                 <li><a href="cadusuario.php">Cadastro Usuario</a></li>
                 <li><a href="cadlocal.php">Cadastro Local</a></li>
+                <li><a href="cadanotacao.php">Cadastro Anotação</a></li> 
                 <li><a href="listusuario.php">Listagem Usuarios</a></li>
+                <li><a href="listanotacao.php">Listagem Anotação</a></li>
                 <li><a href="listfuncionario.php">Listagem Funcionários</a></li> 
                 <li><a href="listlocal.php">Listagem Locais</a></li> 
                 <li><a href="teste.php">Teste</a></li>

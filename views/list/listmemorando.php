@@ -45,7 +45,8 @@ $result = mysqli_query($conexao, $sql);
 <body>
 <div id="container">
   <div id="voltar">
-   <span class="btn btn-primary" id="btnNovaPesquisa">Nova Pesquisa</span>
+
+   <span class="btn btn-primary" id="btnNovaPesquisa"><span class="glyphicon glyphicon-arrow-left">&nbsp;Nova Pesquisa</span></span>
   </div><br>
 <table class="table">
   <thead class="thead-dark">

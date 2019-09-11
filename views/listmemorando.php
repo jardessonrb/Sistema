@@ -51,7 +51,7 @@ $result = mysqli_query($conexao, $sql);
 <div id="container">
   <div id="pesquisa">
     <form id="frmBuscar" action="list/listmemorando.php" method="POST">
-      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ..." required="">
+      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome do funcionário" required="">
       <button type="submit" class="btn btn-primary" id="btnPesquisa">Buscar</button>
     </form>
   </div>
@@ -83,6 +83,7 @@ $result = mysqli_query($conexao, $sql);
         </span></a>
       </td>
       <td>
+      
     <span  data-toggle="modal" data-target="#abremodalMemorandoUpdate" class="btn btn-primary btn-xs" onclick="getDadosMemorando('<?php echo $mostra[0] ?>')">
       <span class="glyphicon glyphicon-pencil"></span>
     </span>

@@ -38,7 +38,8 @@ $result = mysqli_query($conexao, $sql);
   <div id="pesquisa">
     <form id="frmBuscar" action="list/listlocal.php" method="POST">
       <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ..." required="">
-      <button type="submit" class="btn btn-primary" id="btnPesquisa">Buscar</button>
+      <button type="submit" class="btn btn-primary" id="btnPesquisa"><span class="glyphicon glyphicon-search">&nbsp;Buscar
+      </span></button>
     </form>
   </div>
 <table class="table">

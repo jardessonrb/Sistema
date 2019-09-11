@@ -4,7 +4,9 @@ require_once '../../lib/dompdf/autoload.inc.php';
 
 use Dompdf\Dompdf;
 
-$id = $_GET['id_mem'];
+$id = $_GET['id_anotacao'];
+$pd = $_GET['p_d'];
+$sd = $_GET['s_d'];
 
 function file_get_contents_curl($url) {
     $ch = curl_init();
@@ -20,7 +22,7 @@ function file_get_contents_curl($url) {
 }
 
 
- $html=file_get_contents("http://localhost/Sistema-Teste/printout/memorando.pdf.php?id_mem=".$id);
+ $html=file_get_contents("http://localhost/Sistema-Teste/printout/anotacao.pdf.php?id_anotacao=".$id."&pd=".$pd."&sd=".$sd);
 
 
  
@@ -38,7 +40,7 @@ $pdf->load_html(utf8_decode($html));
 $pdf->render();
  
 // Enviamos pdf para navegador.
-$pdf->stream('ImprimirMemorando.pdf', array('Attachment' => false));
+$pdf->stream('ImprimirAnotacao.pdf', array('Attachment' => false));
 
 
 

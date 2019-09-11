@@ -28,7 +28,7 @@
 			<label>Setor Local</label>
 			<input type="text" class="form-control input-sm" id="nome_setor" name="nome_setor" placeholder="Ex: Recepção 1° andar">
 			<p></p><br>
-			<span class="btn btn-primary" id="btnCadastrar">Cadastrar</span>
+			<span class="btn btn-primary" id="btnCadastrar"><span class="glyphicon glyphicon-plus"> Cadastrar</span></span>
 			</form>
 		</div>
 		<div class="col-sm-8">

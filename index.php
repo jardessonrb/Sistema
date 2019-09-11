@@ -3,9 +3,17 @@
 <html>
 <head>
 	<title>Login</title>
+	<link rel="shortcut icon" href="img/IconeEmpresa.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
 	<script src="lib/jquery-3.2.1.min.js"></script>
 	<script src="js/funcoes.js"></script>
+	<style type="text/css"></style>
+	<style type="text/css">
+		#titulo{
+			background-color: #165246;
+			border-color: #FFFF;
+		}
+	</style>
 </head>
 <body style="background-color: gray">
 	<br><br><br>
@@ -14,7 +22,7 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 				<div class="panel panel-primary">
-					<div class="panel panel-heading">Memorando</div>
+					<div class="panel panel-heading" id="titulo">Memorando</div>
 					<div class="panel panel-body">
 						<p>
 							<img src="img/LogoNeuroCentro.png"  width="100%">
@@ -25,7 +33,7 @@
 							<label>Senha</label>
 							<input type="password" name="senha" id="senha" class="form-control input-sm">
 							<p></p>
-							<span class="btn btn-primary btn-sm" id="entrarSistema">Entrar</span>
+							<span class="btn btn-success btn-sm" id="entrarSistema">Entrar</span>
 							
 							
 						</form>

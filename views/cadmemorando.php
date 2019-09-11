@@ -65,7 +65,7 @@ $nome_func = mysqli_query($conexao, $sql2);
 			<label>Justificativa</label>
 			<textarea class="form-control input-sm" style="height: 500px;" id="nome_justificativa" name="nome_justificativa" placeholder="Informo que ..."></textarea>
 			<p></p><br>
-			<button type="submit" class="btn btn-primary" id="btnCadastrar" name="btnCad">Cadastrar</button>
+			<button type="submit" class="btn btn-primary" id="btnCadastrar" name="btnCad"><span class="glyphicon glyphicon-plus"> Cadastrar</span></button>
 			<!--<span class="btn btn-primary" id="btnCadFuncionario">Cadastrar</span>-->
 			</form>
 		</div>

@@ -49,7 +49,7 @@ $nome = mysqli_query($conexao, $sql);
 							<option value="3">Alto</option>
 					</select>
 					<p></p><br>
-					<span class="btn btn-primary" id="btnCadastrar">Cadastrar</span>
+					<span class="btn btn-primary" id="btnCadastrar"><span class="glyphicon glyphicon-plus"> Cadastrar</span></span>
 					</form>
 				</div>
 				<div class="col-sm-8">
