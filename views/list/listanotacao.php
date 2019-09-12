@@ -19,8 +19,6 @@ $sql = "SELECT ano.id_anotacao, ano.data_anotacao, ano.corpo_anotacao, fun.nome_
 
 $result = mysqli_query($conexao, $sql);
 
-$nomes = mysqli_fetch_row($result);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,6 +36,11 @@ $nomes = mysqli_fetch_row($result);
       margin-left: 0;
       width: 30%;
      border-color: #7bac3b; 
+    }
+    #hr-top{
+      margin-left: 0;
+      width: 40%;
+      border-color: #7bac3b
     }
     #sep{
       margin-top: -5px;
@@ -81,8 +84,9 @@ $nomes = mysqli_fetch_row($result);
 <body>
 <div id="container">
   <div id="conteudo">
-        <?php if(mysqli_num_rows($result) > 0){ ?>
+        <?php if(mysqli_num_rows($result) > 0){ ?>   
           <h3>Anotações do Funcionário</h3>
+          <hr id="hr-top">
           <?php while ($mostra = mysqli_fetch_row($result)): ?>
           <span class="subnome">N° : </span><span class="dados"><?php echo $mostra[0] ?></span>
           <span class="subnome">Data de Anotação:&nbsp;</span><span class="dados"><?php echo $mostra[1] ?></span>
