@@ -1,72 +1,71 @@
-<!--<?php 
 
-	$str = "' or 1=1 #";
-
-	$arr1 = str_split($str);
-	$arr2 = str_split($str, 3);
-
-	
-	for($i = 0; $i < count($arr1); $i++ ){
-
-		if($arr1[$i] == "'" || $arr1[$i] == "@" || $arr1[$i] == "#" || $arr1[$i] == "!" || $arr1[$i] == "1"){
-			print_r($arr1[$i]);
-		}
-		
-	}
-	
-
-?>-->
 <?php 
 	session_start();
 	if(isset($_SESSION['usuario'])){
+		require_once "menu.php";
+		require_once "../classes/conexao.class.php";
 
+		$itens_por_pag = 2;
+
+		$pagina = intval($_GET['pagina']);
+
+		$sql_code = "select nome_usuario, senha_usuario from tab_usuario LIMIT $pagina, $itens_por_pag";
+
+		$execute = $mysqli->query($sql_code) or die($mysqli->error);
+
+		$produto = $execute->fetch_assoc();
+		$num = $execute->num_rows;
+
+		$num_total = $mysqli->query("select nome_usuario, senha_usuario from tab_usuario")->num_rows;
+
+		$num_paginas = ceil($num_total/$itens_por_pag);
 
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Teste</title>
-	<?php require_once "menu.php" ?>
-	<script type="text/javascript" src="../lib/tinymce/tinymce.min.js"></script>
-	<script>
-		 tinymce.init({
-
-		   selector: '#document'  //Change this value according to your HTML
-		   
-		 }); 
-     </script>
-
-	<style type="text/css">
-		#container{}
-		#geral{}
-		#position{
-
-			position: relative;
-			margin-left: 60px;
-			margin-top: 40px;
-
-		}
-
-		textarea{
-
-			height: 350px;
-
-		}
-	</style>
+	<title></title>
 </head>
 <body>
-	<div id="container">
-		<div id="geral">
-			<div id="position">
-				<div class="col-sm-8">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-4">
+				<h1>Produtos</h1>
+				<?php if($num > 0){ ?>
 
-					<form>
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<td>Nome</td>
+								<td>Senha</td>
+							</tr>
+						</thead>
+						<tbody>
+							<?php do{ ?>
+							<tr>
+								<td><?php echo $produto['nome_usuario']; ?></td>
+								<td><?php echo $produto['senha_usuario']; ?></td>
+							</tr>
+						<?php }while($produto = $execute->fetch_assoc()); ?>
+						</tbody>
+					</table>
+					<nav aria-label="Page navigation example">
+					  <ul class="pagination">
+					    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					    <?php for ($i=0; $i < $num_paginas; $i++) { ?>
+					    	<?php  
 
-				   		<textarea id="document" name="document" placeholder="Informo que ..."></textarea>
-				   		
-				   </form>
-
-				</div>
+					    	$estilo = "";
+					    	if($pagina == $i){
+					    		$estilo = "class=\"active\"";
+					    	}
+					    	?>
+					    	<li <?php echo $estilo; ?> class="page-item"><a class="page-link" href="#"><?php echo $i ?></a></li>
+					    <?php  } ?>
+					    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+					  </ul>
+					</nav>
+				<?php } ?>
 				
 			</div>
 		</div>
@@ -74,10 +73,10 @@
 </body>
 </html>
 
-<?php 
 
-} else{
+<?php }else{
 	header("location:../index.php");
 }
 
 ?>
+
