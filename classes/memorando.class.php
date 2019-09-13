@@ -86,6 +86,33 @@ class Memorando{
 
 	}
 
+	function listaMemorando(){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+
+		$sql = "SELECT mem.id_memorando,loc.setor_local,loc.nome_predio, usu.nome_usuario, mem.data_memorando, fun.nome_funcionario,  mem.assunto_memorando FROM tab_memorando mem JOIN tab_usuario usu JOIN tab_local loc JOIN tab_funcionario fun on mem.id_usuario = usu.id_usuario AND mem.id_local = loc.id_local AND fun.id_funcionario = mem.id_funcionario ORDER BY mem.id_memorando  DESC LIMIT 4";
+
+		$result = mysqli_query($conexao, $sql);
+
+		return $result;
+
+	}
+
+	function list_memorando($nome){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT mem.id_memorando,loc.setor_local,loc.nome_predio, usu.nome_usuario, mem.data_memorando, fun.nome_funcionario,  mem.assunto_memorando FROM tab_memorando mem JOIN tab_usuario usu JOIN tab_local loc JOIN tab_funcionario fun on mem.id_usuario = usu.id_usuario AND mem.id_local = loc.id_local AND fun.id_funcionario = mem.id_funcionario WHERE fun.nome_funcionario LIKE '%$nome%' ORDER BY mem.id_memorando";
+
+		$result = mysqli_query($conexao, $sql);
+
+		return $result;
+
+	}
+
 
 }
 

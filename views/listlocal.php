@@ -2,18 +2,13 @@
   session_start();
   if(isset($_SESSION['usuario'])){
 
- ?>
+    require_once "menu.php";
+    require_once "../classes/conexao.class.php";
+    require_once "../classes/local.class.php";
 
-<?php require_once "menu.php" ?>
-<?php 
-require_once "../classes/conexao.class.php";
+    $obj_local = new Local();
 
-$c = new Conectar();
-$conexao = $c->conexao();
-
-$sql = "SELECT id_local, nome_predio, setor_local FROM tab_local";
-
-$result = mysqli_query($conexao, $sql);
+    $result = $obj_local->listaLocal();
 
 ?>
 
@@ -32,12 +27,19 @@ $result = mysqli_query($conexao, $sql);
 
     }
   </script>
+  <style type="text/css">
+    h2{
+      position: relative;
+      margin-left: 2%;
+    }
+  </style>
 </head>
 <body>
 <div id="container">
+  <h2>Buscar Local</h2>
   <div id="pesquisa">
     <form id="frmBuscar" action="list/listlocal.php" method="POST">
-      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ..." required="">
+      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome do setor" required="">
       <button type="submit" class="btn btn-primary" id="btnPesquisa"><span class="glyphicon glyphicon-search">&nbsp;Buscar
       </span></button>
     </form>

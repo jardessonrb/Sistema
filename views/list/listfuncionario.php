@@ -2,22 +2,20 @@
   session_start();
   if(isset($_SESSION['usuario'])){
 
+  require_once "menu.php";
+  require_once "../../classes/conexao.class.php";
+  require_once "../../classes/funcionario.class.php";
+
+  $nome = $_POST['nome_pesquisa'];
+
+  $obj_funcionario = new Funcionario();
+
+  $result = $obj_funcionario->list_funcionario($nome);
+
  ?>
 
-<?php require_once "menu.php" ?>
-<?php 
-require_once "../../classes/conexao.class.php";
 
-$c = new Conectar();
-$conexao = $c->conexao();
 
-$nome = $_POST['nome_pesquisa'];
-
-$sql = "SELECT id_funcionario, nome_funcionario, telefone1_funcionario, telefone2_funcionario, cargo_funcionario FROM tab_funcionario WHERE nome_funcionario LIKE '%$nome%'";
-
-$result = mysqli_query($conexao, $sql);
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +31,7 @@ $result = mysqli_query($conexao, $sql);
 <body>
 <div id="container">
   <div id="voltar">
-   <span class="btn btn-primary" id="btnNovaPesquisa">Nova Pesquisa</span>
+   <span class="btn btn-primary" id="btnNovaPesquisa"><span class="glyphicon glyphicon-arrow-left">&nbsp;Nova Pesquisa</span></span>
   </div><br>
 <table class="table">
   <thead class="thead-dark">

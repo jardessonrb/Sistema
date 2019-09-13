@@ -2,32 +2,17 @@
   session_start();
   if(isset($_SESSION['usuario'])){
 
+  require_once "menu.php";
+  require_once "../../classes/conexao.class.php";
+  require_once "../../classes/memorando.class.php";
+  require_once "../../classes/local.class.php";
+  $nome = $_POST['nome_pesquisa'];
 
- ?>
-<?php require_once "menu.php" ?>
-<?php 
-require_once "../../classes/conexao.class.php";
+  $obj_local = new Local();
+  $obj_memorando = new Memorando();
 
-$c = new Conectar();
-$conexao = $c->conexao();
-
-$sql1 =  "SELECT id_local, nome_predio, setor_local FROM tab_local";
-
-$nome_loc = mysqli_query($conexao, $sql1);
-
-?>
-<?php 
-require_once "../../classes/conexao.class.php";
-
-$c = new Conectar();
-$conexao = $c->conexao();
-
-$nome = $_POST['nome_pesquisa'];
-
-
-$sql = "SELECT mem.id_memorando,loc.setor_local,loc.nome_predio, usu.nome_usuario, mem.data_memorando, fun.nome_funcionario,  mem.assunto_memorando FROM tab_memorando mem JOIN tab_usuario usu JOIN tab_local loc JOIN tab_funcionario fun on mem.id_usuario = usu.id_usuario AND mem.id_local = loc.id_local AND fun.id_funcionario = mem.id_funcionario WHERE fun.nome_funcionario LIKE '%$nome%' ORDER BY mem.id_memorando";
-
-$result = mysqli_query($conexao, $sql);
+  $result = $obj_memorando->list_memorando($nome);
+  $nome_loc = $obj_local->listaLocal();
 
 ?>
 

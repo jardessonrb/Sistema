@@ -1,21 +1,16 @@
 <?php 
   session_start();
   if(isset($_SESSION['usuario'])){
+    
+  require_once "menu.php";
+  require_once "../classes/conexao.class.php";
+  require_once "../classes/usuario.class.php";
 
- ?>
- <?php 
-require_once "../classes/conexao.class.php";
+  $obj_usuario = new Usuario();
 
-$c = new Conectar();
-$conexao = $c->conexao();
-
-$sql = "SELECT id_usuario, fun.nome_funcionario, captura_usuario, nome_usuario, senha_usuario, nivel_acesso FROM tab_usuario usu JOIN tab_funcionario  fun on usu.id_funcionario = fun.id_funcionario";
-
-$result = mysqli_query($conexao, $sql);
-
+  $result = $obj_usuario->listaUsuario();
 ?>
 
-<?php require_once "menu.php" ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,12 +26,19 @@ $result = mysqli_query($conexao, $sql);
 
 	    }
 	</script>
+  <style type="text/css">
+    h2{
+      position: relative;
+      margin-left: 2%;
+    }
+  </style>
 </head>
 <body>
 <div id="container">
+  <h2>Buscar Usuário</h2>
   <div id="pesquisa">
     <form id="frmBuscar" action="list/listusuario.php" method="POST">
-      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ...">
+      <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome do funcionário">
       <button type="submit" class="btn btn-primary" id="btnPesquisa"><span class="glyphicon glyphicon-search">&nbsp;Buscar
       </span></button>
     </form>

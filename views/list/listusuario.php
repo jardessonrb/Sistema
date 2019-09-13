@@ -2,26 +2,14 @@
   session_start();
   if(isset($_SESSION['usuario'])){
 
-?>
+  require_once "menu.php";
+  require_once "../../classes/conexao.class.php";
+  require_once "../../classes/usuario.class.php";
+  $nome = $_POST['nome_pesquisa'];
 
-<?php 
+  $obj_usuario = new Usuario();
 
-require_once "menu.php";
-
-?>
-
-<?php 
-
-require_once "../../classes/conexao.class.php";
-
-$c = new Conectar();
-$conexao = $c->conexao();
-
-$nome = $_POST['nome_pesquisa'];
-
-$sql = "SELECT id_usuario, fun.nome_funcionario, captura_usuario, nome_usuario, senha_usuario, nivel_acesso FROM tab_usuario usu JOIN tab_funcionario  fun on usu.id_funcionario = fun.id_funcionario WHERE nome_usuario LIKE '%$nome%'; ";
-
-$result = mysqli_query($conexao, $sql);
+  $result = $obj_usuario->list_usuario($nome);
 
 ?>
 
@@ -33,10 +21,11 @@ $result = mysqli_query($conexao, $sql);
 <body>
 <div id="container">
   <div id="voltar">
-   <span class="btn btn-primary" id="btnNovaPesquisa">Nova Pesquisa</span>
+   <span class="btn btn-primary" id="btnNovaPesquisa"><span class="glyphicon glyphicon-arrow-left">&nbsp;Nova Pesquisa</span></span>
   </div><br>
 <table class="table">
   <thead class="thead-dark">
+    <?php if(mysqli_num_rows($result) > 0){ ?>
     <tr>
       <th scope="col">Nome Funcionário</th>
       <th scope="col">Captura</th>
@@ -79,6 +68,11 @@ $result = mysqli_query($conexao, $sql);
 	</tr>
 </tbody>
 <?php endwhile; ?>
+<?php }else{ ?>
+  <div id="result_zero">
+    <span id="mensagem">Nenhum registro encontrado com esse valor. Pesquise novamente.</span>
+  </div>
+<?php } ?>
 </table>
 </div>
 <div class="modal fade" id="abremodalUsuarioUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -5,21 +5,21 @@
  ?>
 
 <?php require_once "menu.php" ?>
+
 <?php 
 require_once "../../classes/conexao.class.php";
-
-$c = new Conectar();
-$conexao = $c->conexao();
+require_once "../../classes/anotacao.class.php";
 
 $pri_data = $_POST['pri_data'];
 $seg_data = $_POST['seg_data'];
 $id_func  = $_POST['id_funcionario'];
 
-$sql = "SELECT ano.id_anotacao, ano.data_anotacao, ano.corpo_anotacao, fun.nome_funcionario, fun.telefone1_funcionario, fun.cargo_funcionario, fun.id_funcionario, usu.nome_usuario FROM tab_anotacao ano JOIN tab_funcionario fun JOIN tab_usuario usu on ano.id_funcionario = fun.id_funcionario and ano.id_usuario = usu.id_usuario WHERE ano.id_funcionario = '$id_func' AND ano.data_anotacao BETWEEN '$pri_data' AND '$seg_data' ORDER BY ano.id_anotacao DESC";
+$obj = new Anotacao();
 
-$result = mysqli_query($conexao, $sql);
+$result = $obj->listaAnotacao($pri_data, $seg_data, $id_func);
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,6 +82,7 @@ $result = mysqli_query($conexao, $sql);
   </style>
 </head>
 <body>
+
 <div id="container">
   <div id="conteudo">
         <?php if(mysqli_num_rows($result) > 0){ ?>   

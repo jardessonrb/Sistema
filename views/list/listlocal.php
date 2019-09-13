@@ -2,20 +2,16 @@
   session_start();
   if(isset($_SESSION['usuario'])){
 
- ?>
+  require_once "menu.php"; 
+  require_once "../../classes/conexao.class.php";
+  require_once "../../classes/local.class.php";
+  
+  $nome = $_POST['nome_pesquisa'];
 
-<?php require_once "menu.php" ?>
-<?php 
-require_once "../../classes/conexao.class.php";
+  $obj_local = new Local();
 
-$c = new Conectar();
-$conexao = $c->conexao();
+  $result = $obj_local->list_local($nome);
 
-$nome = $_POST['nome_pesquisa'];
-
-$sql = "SELECT id_local, nome_predio, setor_local FROM tab_local WHERE setor_local LIKE '%$nome%'";
-
-$result = mysqli_query($conexao, $sql);
 
 ?>
 

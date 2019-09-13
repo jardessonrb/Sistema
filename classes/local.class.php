@@ -51,6 +51,31 @@ class Local{
 		return $result;
 
 	}
+
+	function listaLocal(){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT id_local, nome_predio, setor_local FROM tab_local";
+
+		$result = mysqli_query($conexao, $sql);
+
+		return $result;
+	}
+
+	function list_local($nome){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+
+		$sql = "SELECT id_local, nome_predio, setor_local FROM tab_local WHERE setor_local LIKE '%$nome%'";
+
+		$result = mysqli_query($conexao, $sql);
+
+		return $result;
+	}
 }
 
 

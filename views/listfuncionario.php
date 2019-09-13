@@ -2,18 +2,13 @@
   session_start();
   if(isset($_SESSION['usuario'])){
 
-?>
+    require_once "menu.php";
+    require_once "../classes/conexao.class.php";
+    require_once "../classes/funcionario.class.php";
 
-<?php require_once "menu.php" ?>
-<?php 
-require_once "../classes/conexao.class.php";
+    $obj_funcionario = new Funcionario();
 
-$c = new Conectar();
-$conexao = $c->conexao();
-
-$sql = "SELECT id_funcionario, nome_funcionario, telefone1_funcionario, telefone2_funcionario, cargo_funcionario FROM tab_funcionario";
-
-$result = mysqli_query($conexao, $sql);
+    $result = $obj_funcionario->listaFuncionario();
 
 ?>
 <!DOCTYPE html>
@@ -33,11 +28,17 @@ $result = mysqli_query($conexao, $sql);
 
     }
   </script>
-  
-  
+
+  <style type="text/css">
+    h2{
+      position: relative;
+      margin-left: 25px;
+    }
+  </style>
 </head>
 <body>
 <div id="container">
+  <h2>Buscar Funcinário</h2>
   <div id="pesquisa">
     <form id="frmBuscar" action="list/listfuncionario.php" method="POST">
       <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome ...">

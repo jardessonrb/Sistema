@@ -2,29 +2,18 @@
   session_start();
   if(isset($_SESSION['usuario'])){
 
- ?>
-<?php require_once "menu.php" ?>
-<?php 
-require_once "../classes/conexao.class.php";
+  require_once "menu.php";
+  require_once "../classes/conexao.class.php";
+  require_once "../classes/memorando.class.php";
+  require_once "../classes/local.class.php";
 
-$c = new Conectar();
-$conexao = $c->conexao();
-
-$sql1 =  "SELECT id_local, nome_predio, setor_local FROM tab_local";
-
-$nome_loc = mysqli_query($conexao, $sql1);
-
-?>
-<?php 
-require_once "../classes/conexao.class.php";
-
-$c = new Conectar();
-$conexao = $c->conexao();
+  $obj_local = new Local();
+  $obj_memorando = new Memorando();
 
 
-$sql = "SELECT mem.id_memorando,loc.setor_local,loc.nome_predio, usu.nome_usuario, mem.data_memorando, fun.nome_funcionario,  mem.assunto_memorando FROM tab_memorando mem JOIN tab_usuario usu JOIN tab_local loc JOIN tab_funcionario fun on mem.id_usuario = usu.id_usuario AND mem.id_local = loc.id_local AND fun.id_funcionario = mem.id_funcionario ORDER BY mem.id_memorando  DESC LIMIT 4";
+  $nome_loc = $obj_local->listaLocal();
 
-$result = mysqli_query($conexao, $sql);
+  $result = $obj_memorando->listaMemorando();
 
 ?>
 
@@ -45,14 +34,20 @@ $result = mysqli_query($conexao, $sql);
 
     }
   </script>
- 
+  <style type="text/css">
+    h2{
+      position: relative;
+      margin-left: 2%;
+    }
+  </style>
 </head>
 <body>
 <div id="container">
+  <h2>Buscar Memorando</h2>
   <div id="pesquisa">
     <form id="frmBuscar" action="list/listmemorando.php" method="POST">
       <input type="text" class="form-control input-sm" id="nome_pesquisa" name="nome_pesquisa" placeholder="Digite o nome do funcionário" required="">
-      <button type="submit" class="btn btn-primary" id="btnPesquisa">Buscar</button>
+      <button type="submit" class="btn btn-primary" id="btnPesquisa"><span class="glyphicon glyphicon-search">&nbsp;Buscar</span></button>
     </form>
   </div>
 <table class="table">

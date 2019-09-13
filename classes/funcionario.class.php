@@ -54,6 +54,33 @@ class Funcionario{
 	}
 
 
+	function listaFuncionario(){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT id_funcionario, nome_funcionario, telefone1_funcionario, telefone2_funcionario, cargo_funcionario FROM tab_funcionario";
+
+		$result = mysqli_query($conexao, $sql);
+
+		return $result;
+
+	}
+
+	function list_funcionario($nome){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT id_funcionario, nome_funcionario, telefone1_funcionario, telefone2_funcionario, cargo_funcionario FROM tab_funcionario WHERE nome_funcionario LIKE '%$nome%'";
+
+		$result = mysqli_query($conexao, $sql);
+
+		return $result;
+
+		}
+
+
 }
 
 

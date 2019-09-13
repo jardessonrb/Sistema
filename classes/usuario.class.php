@@ -178,6 +178,34 @@ class Usuario{
 
 
 		return $result;
+
+	}
+
+	public function listaUsuario(){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$sql = "SELECT id_usuario, fun.nome_funcionario, captura_usuario, nome_usuario, senha_usuario, nivel_acesso FROM tab_usuario usu JOIN tab_funcionario  fun on usu.id_funcionario = fun.id_funcionario";
+
+		$result = mysqli_query($conexao, $sql);
+
+		return $result;
+
+	}
+
+	public function list_usuario($nome){
+
+		$c = new Conectar();
+		$conexao = $c->conexao();
+
+		$nome = $_POST['nome_pesquisa'];
+
+		$sql = "SELECT id_usuario, fun.nome_funcionario, captura_usuario, nome_usuario, senha_usuario, nivel_acesso FROM tab_usuario usu JOIN tab_funcionario  fun on usu.id_funcionario = fun.id_funcionario WHERE fun.nome_funcionario LIKE '%$nome%'; ";
+
+		$result = mysqli_query($conexao, $sql);
+
+		return $result;
 	}
 
 

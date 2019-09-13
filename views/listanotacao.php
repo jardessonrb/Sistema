@@ -80,12 +80,17 @@ $nome = mysqli_query($conexao, $sql);
       margin-left: 38px;
     }
 
+    h2{
+      position: relative;
+      margin-left: 2%;
+    }
+
 
   </style>
 </head>
 <body>
 	<div id="pesquisa">
-    <h2>Dados da busca</h2><br>
+    <h2>Buscar Anotação</h2><br>
     <form id="frmBuscar" action="list/listanotacao.php" method="POST">
       <label class="label-input" id="label1">DE:</label>
       <input type="date" class="form-control input-sm" id="pri_data" name="pri_data" required=""><br><br>
